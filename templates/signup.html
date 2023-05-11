@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div class='registerForm'>
+        <div class='logoContainer'>
+            <img src='img/logo.png' class='logo'></img>
+        </div>
+        <h2 class='greeting'>Hello Again!</h2>
+        <p class='greet'>Welcome to the Kostanay_Portal</p>
+        <p class='secondGreet'>This is a very good Portal</p>
+        <form action="/signup" method="post" class='signForm' onsubmit="return validateRegisterForm()">
+            <label class='nameLabel'>Имя</label>
+            <input class='nameInput' type="text" id="nameInput" name="name"></input>
+            <label class='surnameLabel'>Фамилия</label>
+            <input class='surnameInput' type="text" id="surnameInput" name="second_name"></input>
+            <img src='img/dog.svg' class='inputRegIconEmail'></img>
+            <img src='img/passwordIcon.svg' class='inputRegIconPassword'></img>
+            <label class='labelEmail'>E-mail</label>
+            <input class='inputReg' type='email' id="registerEmail" name="mail"></input>
+            <label class='labelPassword'>Пароль</label>
+            <input class='inputReg' type='password' id="registerPassword" name="password"></input>
+            <button class='signInBtn'>Продолжить</button>
+        </form>
+        <div class='anotherOptions'>
+            <p class='anotherOptionsCaption'>Другие варианты входа:</p>
+            <button class='signInWithBtn'> <img src='img/googleIcon.svg' class='signInWithIcon'></img>
+                <span class='signInWithCaption'>Войти через Google</span></button>
+            <button class='signInWithBtn'> <img src='img/facebookIcon.svg' class='signInWithIcon'></img>
+                <span class='signInWithCaption'>Войти через Facebook</span></button>
+            <button class='signInWithBtn'> <img src='img/VKIcon.svg' class='signInWithIcon'></img> <span
+                    class='signInWithCaption'>Войти через VK</span></button>
+        </div>
+        <span class='haveAccountCaption'>Уже есть аккаунт? <button class='returnToSignUpBtn'>Войти</button></span>
+    </div>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>

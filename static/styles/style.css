@@ -1,0 +1,350 @@
+@font-face {
+    font-family: 'Mazzard M Regular';
+    src: url('fonts/MazzardM-Regular.ttf');
+}
+@font-face {
+    font-family: 'Mazzard M Medium';
+    src: url('fonts/MazzardM-Medium.ttf');
+}
+@font-face {
+    font-family: 'Mazzard L Medium';
+    src: url('fonts/MazzardL-Medium.ttf');
+}
+@font-face {
+    font-family: 'Mazzard M Light';
+    src: url('fonts/MazzardM-Light.ttf');
+}
+@font-face {
+    font-family: 'Mazzard M SemiBold';
+    src: url('fonts/MazzardM-SemiBold.ttf');
+}
+@font-face {
+    font-family: 'Mazzard L SemiBold';
+    src: url('fonts/MazzardL-SemiBold.ttf');
+}
+@font-face {
+    font-family: 'Mazzard M Bold';
+    src: url('fonts/MazzardM-Bold.ttf');
+}
+@font-face {
+    font-family: 'Mazzard L Bold';
+    src: url('fonts/MazzardL-Bold.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: white;
+}
+
+.profile {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Mazzard M Medium';
+    height: 100vh;
+}
+
+.logoContainer {
+    background-image: url(../img/border.svg);
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 60px;
+    height: 30px;
+}
+
+.greeting {
+    padding-top: 30px;
+    font-weight: 500;
+}
+
+.greet {
+    color: #8C8C8C;
+    padding-top: 8px;
+}
+
+.secondGreet {
+    color: #8C8C8C;
+    padding-top: 10px;
+}
+
+.signForm {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-top: 25px;
+    width: 328px;
+    height: 200px;
+}
+
+.inputIconEmail {
+    position: absolute;
+    top: 27px;
+    left: 300px;
+    width: 19px;
+    height: 24px;
+}
+
+.inputIconPassword {
+    position: absolute;
+    top: 88px;
+    left: 300px;
+    width: 19px;
+    height: 24px;
+}
+
+.displayNone {
+    visibility: hidden;
+    position: absolute;
+    top: 24px;
+    left: 300px;
+    width: 19px;
+    height: 24px;
+}
+
+.labelEmail {
+    position: relative;
+    left: 20px;
+    top: 17px;
+    background-color: white;
+    width: 34px;
+    font-size: 12px;
+    color: #707070; 
+}
+
+.labelPassword {
+    position: relative;
+    left: 20px;
+    top: 7px;
+    background-color: white;
+    width: 40px;
+    font-size: 12px;
+    color: #707070;
+}
+
+.input {
+    border: 1px solid #B9B9B9;
+    flex-shrink: 0;
+    border-radius: 12px;
+    width: 310px;
+    height: 44px;
+    padding-left: 18px;
+    margin-top: 10px;
+}
+
+.emailErrorMsg {
+    position: absolute;
+    /* display: none; */
+    font-family: 'Mazzard M Medium';
+    color: #ED5454;
+    font-size: 12px;
+    top: 58px;
+    left: 130px;
+}
+
+.passwordErrorMsg {
+    position: absolute;
+    /* display: none; */
+    font-family: 'Mazzard M Medium';
+    color: #ED5454;
+    font-size: 12px;
+    top: 117px;
+    left: 130px;
+}
+
+.signInBtn {
+    background-color: #547FED;
+    flex-shrink: 0;
+    font-family: 'Mazzard M Medium';
+    margin-top: 16px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    width: 328px;
+    height: 44px;
+    border-radius: 12px;
+}
+
+.forgotPasswordBtn {
+    border: none;
+    background: transparent;
+    width: 122px;
+    height: 11px;
+    margin: 8px 0px 0px auto;
+    font-family: 'Mazzard M Medium';
+    color: #ED5454;
+    font-size: 16px;
+}
+
+.anotherOptions {
+    display: flex;
+    flex-direction: column;
+    width: 328px;
+}
+
+.anotherOptionsCaption {
+    margin: 33px 0px 0px 0px;
+    color: #8C8C8C;
+    font-size: 16px;
+}
+
+.signInWithBtn {
+    background-color: transparent;
+    font-family: 'Mazzard M Medium';
+    margin-top: 16px;
+    border: 1px solid #B9B9B9;
+    color: #AAAAAA;
+    text-align: start;
+    font-size: 16px;
+    width: 328px;
+    height: 44px;
+    border-radius: 12px;
+}
+
+.signInWithIcon {
+    margin-left: 7px;
+    margin-top: 3.5px;
+    width: 24px;
+    height: 24px;
+}
+
+.signInWithCaption {
+    position: relative;
+    bottom: 6px;
+    left: 5px;
+}
+
+.noAccountCaption {
+    margin-top: 25px;
+    color: #8C8C8C;
+    font-size: 16px;
+}
+
+.noAccountBtn {
+    background-color: transparent;
+    border: none;
+    color: #547FED;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.registerForm {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Mazzard M Medium';
+    height: 100vh;
+}
+
+.nameLabel {
+    position: absolute;
+    left: 12px;
+    bottom: 191.5px;
+    background-color: white;
+    width: 22px;
+    font-size: 12px;
+    color: #707070; 
+}
+
+.nameInput {
+    border: 1px solid #B9B9B9;
+    flex-shrink: 0;
+    border-radius: 12px;
+    width: 116px;
+    height: 35px;
+    padding-left: 18px;
+}
+
+.surnameLabel {
+    position: absolute;
+    right: 123px;
+    bottom: 191.5px;
+    background-color: white;
+    width: 50px;
+    font-size: 12px;
+    color: #707070;
+    z-index: 1; 
+}
+
+.surnameInput {
+    position: absolute;
+    left: 143px;
+    border: 1px solid #B9B9B9;
+    flex-shrink: 0;
+    border-radius: 12px;
+    width: 168px;
+    height: 35px;
+    padding-left: 18px;
+}
+
+.labelEmail {
+    position: relative;
+    left: 20px;
+    top: 7px;
+    background-color: white;
+    width: 34px;
+    font-size: 12px;
+    color: #707070; 
+}
+
+.labelPassword {
+    position: relative;
+    left: 20px;
+    top: 7px;
+    background-color: white;
+    width: 40px;
+    font-size: 12px;
+    color: #707070;
+}
+
+.inputReg {
+    border: 1px solid #B9B9B9;
+    flex-shrink: 0;
+    border-radius: 12px;
+    width: 310px;
+    height: 35px;
+    padding-left: 18px;
+}
+
+.inputRegIconEmail {
+    position: absolute;
+    top: 58px;
+    left: 300px;
+    width: 19px;
+    height: 24px;
+}
+
+.inputRegIconPassword {
+    position: absolute;
+    top: 110px;
+    left: 300px;
+    width: 19px;
+    height: 24px;
+}
+
+.haveAccountCaption {
+    margin-top: 20px;
+    color: #8C8C8C;
+    font-size: 16px;
+}
+
+.returnToSignUpBtn {
+    background-color: transparent;
+    border: none;
+    color: #547FED;
+    font-size: 16px;
+    cursor: pointer;
+}
