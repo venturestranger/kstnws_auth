@@ -116,7 +116,7 @@ body {
 .labelEmail {
     position: relative;
     left: 20px;
-    top: 7px;
+    top: 17px;
     background-color: white;
     width: 34px;
     font-size: 12px;
@@ -140,6 +140,27 @@ body {
     width: 310px;
     height: 44px;
     padding-left: 18px;
+    margin-top: 10px;
+}
+
+.emailErrorMsg {
+    position: absolute;
+    /* display: none; */
+    font-family: 'Mazzard M Medium';
+    color: #ED5454;
+    font-size: 12px;
+    top: 58px;
+    left: 130px;
+}
+
+.passwordErrorMsg {
+    position: absolute;
+    /* display: none; */
+    font-family: 'Mazzard M Medium';
+    color: #ED5454;
+    font-size: 12px;
+    top: 117px;
+    left: 130px;
 }
 
 .signInBtn {
