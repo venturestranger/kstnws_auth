@@ -1,6 +1,7 @@
 const form = document.getElementById('loginForm');
 const emailInput = document.getElementById("emailInput");
 const passwordInput = document.getElementById("passwordInput");
+const emailLabel = document.getElementById("loginEmailLabel");
 
 function validateLoginForm(event) {
     event.preventDefault();
@@ -20,7 +21,7 @@ function validateLoginForm(event) {
     }
 
     if (password === "") {
-        passwordInput.nextElementSibling.textContent = 'Поле почта не должно быть пустым.';
+        passwordInput.nextElementSibling.textContent = 'Неверный пароль';
         passwordInput.nextElementSibling.style.display = 'block';
         isValid = false;
     } else {

@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="../static/styles/style.css">
 </head>
 
 <body>
     <div class='profile'>
         <div class='logoContainer'>
-            <img src='img/logo.png' class='logo'></img>
+            <img src='../static/img/logo.png' class='logo'></img>
         </div>
         <!-- Hello Again! -->
         <h2 class='greeting'><%= dict[lang][greeting] %></h2>
@@ -21,13 +21,13 @@
         <!-- This is a very good Portal -->
         <p class='secondGreet'><%= dict[lang][secondGreet] %></p>
         <form action="/login" method="post" id="loginForm" class='signForm'>
-            <img src='img/dog.svg' class='inputIconEmail'></img>
-            <img src='img/passwordIcon.svg' class='inputIconPassword'></img>
+            <img src='../static/img/dog.svg' class='inputIconEmail'></img>
+            <img src='../static/img/passwordIcon.svg' class='inputIconPassword'></img>
             <label class='labelEmail'>E-mail</label>
             <input class='input' type='email' id="emailInput" name="mail"></input>
             <span class="emailErrorMsg"></span>
             <!-- Пароль -->
-            <label class='labelPassword'><%= dict[lang][labelPassword] %></label>
+            <label class='labelPassword'>Password</label>
             <input class='input' type='password' id="passwordInput" name="password"></input>
             <span class="passwordErrorMsg"></span>
             <!-- Войти -->
@@ -41,11 +41,11 @@
             <!-- Войти через Facebook - signWithFacebook -->
             <!-- Войти через VK - signWithVK -->
             <p class='anotherOptionsCaption'><%= dict[lang][anotherOptionsCaption] %></p>
-            <button class='signInWithBtn'> <img src='img/googleIcon.svg' class='signInWithIcon'></img> <span
+            <button class='signInWithBtn'> <img src='../static/img/googleIcon.svg' class='signInWithIcon'></img> <span
                     class='signInWithCaption'><%= dict[lang][signWithGoogle] %></span></button>
-            <button class='signInWithBtn'> <img src='img/facebookIcon.svg' class='signInWithIcon'></img> <span
+            <button class='signInWithBtn'> <img src='../static/img/facebookIcon.svg' class='signInWithIcon'></img> <span
                     class='signInWithCaption'><%= dict[lang][signWithFacebook] %></span></button>
-            <button class='signInWithBtn'> <img src='img/VKIcon.svg' class='signInWithIcon'></img> <span
+            <button class='signInWithBtn'> <img src='../static/img/VKIcon.svg' class='signInWithIcon'></img> <span
                     class='signInWithCaption'><%= dict[lang][signWithVK] %></span></button>
         </div>
         <!-- Нет аккаунта? -->
@@ -53,7 +53,7 @@
         <!-- Зарегестрироваться -->
         <button class='noAccountBtn'><%= dict[lang][noAccountBtn] %></button>
     </div>
-    <script src="scripts/script.js"></script>
+    <script src="../static/scripts/script.js"></script>
 </body>
 
 </html>

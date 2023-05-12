@@ -114,21 +114,23 @@ body {
 }
 
 .labelEmail {
-    position: relative;
+    position: absolute;
     left: 20px;
-    top: 17px;
+    top: 10px;
     background-color: white;
-    width: 34px;
+    width: auto;
+    max-width:fit-content;
     font-size: 12px;
     color: #707070; 
 }
 
 .labelPassword {
-    position: relative;
+    position: absolute;
     left: 20px;
-    top: 7px;
+    top: 70px;
     background-color: white;
-    width: 40px;
+    width: auto;
+    max-width: fit-content;
     font-size: 12px;
     color: #707070;
 }
@@ -140,7 +142,7 @@ body {
     width: 310px;
     height: 44px;
     padding-left: 18px;
-    margin-top: 10px;
+    margin-top: 16px;
 }
 
 .emailErrorMsg {
@@ -290,7 +292,7 @@ body {
     padding-left: 18px;
 }
 
-.labelEmail {
+.regLabelEmail {
     position: relative;
     left: 20px;
     top: 7px;
@@ -300,7 +302,7 @@ body {
     color: #707070; 
 }
 
-.labelPassword {
+.regLabelPassword {
     position: relative;
     left: 20px;
     top: 7px;
