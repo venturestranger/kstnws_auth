@@ -172,7 +172,7 @@ app.route("/signup")
 					else if (user.is_verified == false) 
 						verifyPage(req, res, mail)
 					else 
-						res.redirect(`/login`)
+						res.redirect(`/auth/login`)
 				} else
 					await axios.post(env.URL_API + `/rest/users`, {
 						is_verified: false,

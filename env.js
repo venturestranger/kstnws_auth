@@ -4,7 +4,7 @@ const env = {
 	SIGNUP_LOCK: "1m",
 	LOGIN_ATTEMPTS: 3,
 	LOGIN_LOCK: "1m",
-	PORT: 3000,
+	PORT: 4000,
 
 	URL_API: "http://tvoykostanay.kz/api",
 	//URL_API: "http://localhost:5000/api",
@@ -12,7 +12,7 @@ const env = {
 
 	GOOGLE_CLIENT_ID: '484591857221-6acq88tleltg8c0eaa7vob7ic6sq9elq.apps.googleusercontent.com',
 	GOOGLE_CLIENT_SECRET: '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',
-	GOOGLE_REDIRECT_URI: 'http://localhost:3000/auth/google/callback'
+	GOOGLE_REDIRECT_URI: 'http://tvoykostanay.kz/auth/google/callback'
 }
 
 module.exports = env

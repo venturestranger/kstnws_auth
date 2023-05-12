@@ -16,7 +16,7 @@
         </div>
         <h2 class='greeting'><%= dict[lang].greeting %></h2>
         <p class='greet'><%= dict[lang].greet %></p>
-        <form action="/login" method="post" id="loginForm" class='signForm'>
+        <form action="/auth/login" method="post" id="loginForm" class='signForm'>
             <img src='img/dog.svg' class='inputIconEmail'></img>
             <img src='img/passwordIcon.svg' class='inputIconPassword'></img>
             <label class='labelEmail'>E-mail</label>
@@ -34,7 +34,7 @@
                     class='signInWithCaption'><%= dict[lang].signWithGoogle %></span></a>
         </div>
         <p class='noAccountCaption'><%= dict[lang].noAccountCaption %></p>
-        <a href="/signup" class='noAccountBtn'><%= dict[lang].noAccountBtn %></a>
+        <a href="/auth/signup" class='noAccountBtn'><%= dict[lang].noAccountBtn %></a>
     </div>
     <script src="scripts/script.js"></script>
 </body>

@@ -30,7 +30,7 @@ const recursiveAuth = async function(req, res, user) {
 					res.cookie("id", user.id, {signed: true})
 					res.render("status", {lang: req.cookies.lang, dict: dict, msgs: ["200"]})
 				} else
-					res.redirect("/login")
+					res.redirect("/auth/login")
 			} else 
 				await axios.post(env.URL_API + `/rest/users`, {
 					is_verified: true,
@@ -64,7 +64,7 @@ const recursiveAuth = async function(req, res, user) {
 		})
 }
 
-app.get('/auth/google', utils.isNotAuth, (req, res) => {
+app.get('/google', utils.isNotAuth, (req, res) => {
 	const authorizeUrl = client.generateAuthUrl({
 		access_type: 'offline',
 		scope: 'profile email'
@@ -72,7 +72,7 @@ app.get('/auth/google', utils.isNotAuth, (req, res) => {
 	res.redirect(authorizeUrl);
 });
 
-app.get('/auth/google/callback', utils.isNotAuth, async (req, res) => {
+app.get('/google/callback', utils.isNotAuth, async (req, res) => {
 	const { code } = req.query;
 	const { tokens } = await client.getToken(code);
 	client.setCredentials(tokens);

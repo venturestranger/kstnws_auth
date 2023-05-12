@@ -23,7 +23,7 @@
             <%= dict[lang].greet %>
         </p>
         <!-- This is a very good Portal -->
-        <form action="/signup" method="post" class='signForm' onsubmit="return validateRegisterForm()">
+        <form action="/auth/signup" method="post" class='signForm' onsubmit="return validateRegisterForm()">
             <!-- Имя -->
             <label class='nameLabel'>
                 <%= dict[lang].nameLabel %>
@@ -63,7 +63,7 @@
         <!-- Войти -->
         <span class='haveAccountCaption'>
             <%= dict[lang].haveAccountCaption %>
-                <a class='returnToSignUpBtn' href="/login"><%= dict[lang].returnToSignUpBtn %></a>
+                <a class='returnToSignUpBtn' href="/auth/login"><%= dict[lang].returnToSignUpBtn %></a>
         </span>
     </div>
     <script src="scripts/script.js"></script>

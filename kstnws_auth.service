@@ -1,0 +1,14 @@
+[Unit]
+Description=Portal Auth Module
+After=network.target
+
+[Service]
+Type=simple
+User=debian
+WorkingDirectory=/home/debian/kstnws/kstnws_auth/
+ExecStart=/usr/bin/node /home/debian/kstnws/kstnws_auth/main.js
+Restart=always
+StartLimitInterval=0
+
+[Install]
+WantedBy=multi-user.target
