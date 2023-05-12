@@ -112,7 +112,8 @@ app.get("/verify/:link", (req, res) => {
 
 app.route("/login")
 	.get(utils.isNotAuth, (req, res) => {
-		res.render("login")
+		console.log(req.cookies.lang)
+		res.render("login", {lang: req.cookies.lang, dict: dict, msgs: ["200"]})
 	})
 	.post(utils.isNotAuth, registerLoginAttempt, async (req, res) => {
 		let mail = req.body.mail
@@ -150,7 +151,7 @@ app.get("/logout", utils.isAuth, (req, res) => {
 
 app.route("/signup")
 	.get(utils.isNotAuth, (req, res) => {
-		res.render("signup")
+		res.render("signup", {lang: req.cookies.lang, dict: dict, msgs: ["200"]})
 	})
 	.post(utils.isNotAuth, registerSignupAttempt, async (req, res) => {
 		let name = req.body.name

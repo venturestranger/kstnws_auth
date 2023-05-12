@@ -11,7 +11,19 @@ const dict = {
 		"VER": "Пользователь подтвержден.",
 		"NOTVER": "Пользователь не подтвержден.",
 		"ERR": "Ошибка:",
-		"token-sent": "Токен был отправлен вам на почту."
+		"token-sent": "Токен был отправлен вам на почту.",
+		"greeting": "Приветствуем!",
+		"greet": "Добро пожаловать на портал",
+		"secondGreet": "Портал со свежими новостями",
+		"labelPassword": "Пароль",
+		"signInBtn": "Войти",
+		"forgotPasswordBtn": "Забыли пароль?",
+		"anotherOptionsCaption": "Другие варианты входа:",
+		"signWithGoogle": "Войти через Google",
+		"signWithFacebook": "Войти через Facebook",
+		"signWithVK": "Войти через VK",
+		"noAccountCaption": "Нет аккаунта?",
+		"noAccountBtn": "Зарегестрироваться"
 	},
 	"ru": {
 		"200": "Действие выполнено успешно.",
@@ -25,7 +37,19 @@ const dict = {
 		"VER": "Пользователь подтвержден.",
 		"NOTVER": "Пользователь не подтвержден.",
 		"ERR": "Ошибка:",
-		"token-sent": "Токен был отправлен вам на почту."
+		"token-sent": "Токен был отправлен вам на почту.",
+		"greeting": "Приветствуем!",
+		"greet": "Добро пожаловать на портал",
+		"secondGreet": "Портал со свежими новостями",
+		"labelPassword": "Пароль",
+		"signInBtn": "Войти",
+		"forgotPasswordBtn": "Забыли пароль?",
+		"anotherOptionsCaption": "Другие варианты входа:",
+		"signWithGoogle": "Войти через Google",
+		"signWithFacebook": "Войти через Facebook",
+		"signWithVK": "Войти через VK",
+		"noAccountCaption": "Нет аккаунта?",
+		"noAccountBtn": "Зарегистрироваться"
 	},
 	"kz": {
 		"200": "Действие выполнено успешно.",
