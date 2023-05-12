@@ -22,8 +22,9 @@ function validateLoginForm(event) {
         emailInput.nextElementSibling.style.display = 'none';
     }
 
-    if (password === "") {
-        passwordInput.nextElementSibling.textContent = 'Поле пароль не должно быть пустым.';
+    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{7,12}$/;
+    if (!password.match(passwordRegex)) {
+        passwordInput.nextElementSibling.textContent = 'Поле пароль должно соответствовать стандарту';
         passwordInput.nextElementSibling.style.display = 'block';
         isValid = false;
     } else {

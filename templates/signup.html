@@ -27,16 +27,20 @@
             <%= dict[lang].secondGreet %>
         </p>
         <form action="/signup" method="post" class='signForm' onsubmit="return validateRegisterForm()">
-            <!-- Имя -->
-            <label class='nameLabel'>
-                <%= dict[lang].nameLabel %>
-            </label>
-            <input class='nameInput' type="text" id="nameInput" name="name"></input>
-            <!-- Фамилия -->
-            <label class='surnameLabel'>
-                <%= dict[lang].surnameLabel %>
-            </label>
-            <input class='surnameInput' type="text" id="surnameInput" name="second_name"></input>
+            <div class="nameInputDiv">
+                <!-- Имя -->
+                <label class='nameLabel'>
+                    <%= dict[lang].nameLabel %>
+                </label>
+                <input class='nameInput' type="text" id="nameInput" name="name"></input>
+            </div>
+            <div class="surnameInputDiv">
+                <!-- Фамилия -->
+                <label class='surnameLabel'>
+                    <%= dict[lang].surnameLabel %>
+                </label>
+                <input class='surnameInput' type="text" id="surnameInput" name="second_name"></input>
+            </div>
             <img src='../static/img/dog.svg' class='inputRegIconEmail'></img>
             <img src='../static/img/passwordIcon.svg' class='inputRegIconPassword'></img>
             <label class='regLabelEmail'>E-mail</label>
@@ -76,7 +80,9 @@
         <!-- Войти -->
         <span class='haveAccountCaption'>
             <%= dict[lang].haveAccountCaption %>
-                <button class='returnToSignUpBtn'><%= dict[lang].returnToSignUpBtn %></button>
+                <button class='returnToSignUpBtn'>
+                    <%= dict[lang].returnToSignUpBtn %>
+                </button>
         </span>
     </div>
     <script src="../static/scripts/script.js"></script>
