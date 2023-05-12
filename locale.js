@@ -23,7 +23,11 @@ const dict = {
 		"signWithFacebook": "Войти через Facebook",
 		"signWithVK": "Войти через VK",
 		"noAccountCaption": "Нет аккаунта?",
-		"noAccountBtn": "Зарегестрироваться"
+		"noAccountBtn": "Зарегестрироваться",
+		"nameLabel": "Имя",
+		"surnameLabel": "Фамилия",
+		"returnToSignUpBtn": "Войти",
+		"haveAccountCaption": "Уже есть аккаунт?"
 	},
 	"ru": {
 		"200": "Действие выполнено успешно.",
@@ -49,7 +53,11 @@ const dict = {
 		"signWithFacebook": "Войти через Facebook",
 		"signWithVK": "Войти через VK",
 		"noAccountCaption": "Нет аккаунта?",
-		"noAccountBtn": "Зарегистрироваться"
+		"noAccountBtn": "Зарегестрироваться",
+		"nameLabel": "Имя",
+		"surnameLabel": "Фамилия",
+		"returnToSignUpBtn": "Войти",
+		"haveAccountCaption": "Уже есть аккаунт?"
 	},
 	"kz": {
 		"200": "Действие выполнено успешно.",
