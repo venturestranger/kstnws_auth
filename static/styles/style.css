@@ -98,7 +98,7 @@ body {
 
 .inputIconPassword {
     position: absolute;
-    top: 88px;
+    top: 27px;
     left: 300px;
     width: 19px;
     height: 24px;
@@ -113,22 +113,32 @@ body {
     height: 24px;
 }
 
-.labelEmail {
+.loginEmailInputDiv {
     position: relative;
+}
+
+.labelEmail {
+    position: absolute;
     left: 20px;
-    top: 17px;
+    top: 8px;
     background-color: white;
-    width: 34px;
+    width: auto;
+    max-width:fit-content;
     font-size: 12px;
     color: #707070; 
 }
 
-.labelPassword {
+.loginPasswordInputDiv {
     position: relative;
+}
+
+.labelPassword {
+    position: absolute;
     left: 20px;
-    top: 7px;
+    top: 8px;
     background-color: white;
-    width: 40px;
+    width: auto;
+    max-width: fit-content;
     font-size: 12px;
     color: #707070;
 }
@@ -140,7 +150,7 @@ body {
     width: 310px;
     height: 44px;
     padding-left: 18px;
-    margin-top: 10px;
+    margin-top: 16px;
 }
 
 .emailErrorMsg {
@@ -149,7 +159,7 @@ body {
     font-family: 'Mazzard M Medium';
     color: #ED5454;
     font-size: 12px;
-    top: 58px;
+    top: 62px;
     left: 130px;
 }
 
@@ -159,8 +169,8 @@ body {
     font-family: 'Mazzard M Medium';
     color: #ED5454;
     font-size: 12px;
-    top: 117px;
-    left: 130px;
+    top: 123px;
+    left: 124px;
 }
 
 .signInBtn {
@@ -290,7 +300,7 @@ body {
     padding-left: 18px;
 }
 
-.labelEmail {
+.regLabelEmail {
     position: relative;
     left: 20px;
     top: 7px;
@@ -300,7 +310,7 @@ body {
     color: #707070; 
 }
 
-.labelPassword {
+.regLabelPassword {
     position: relative;
     left: 20px;
     top: 7px;

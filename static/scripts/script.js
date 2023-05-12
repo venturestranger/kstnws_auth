@@ -1,6 +1,9 @@
 const form = document.getElementById('loginForm');
 const emailInput = document.getElementById("emailInput");
 const passwordInput = document.getElementById("passwordInput");
+const emailLabel = document.getElementById("loginEmailLabel");
+const loginEmailIcon = document.getElementById("loginEmailIcon");
+const loginPasswordIcon = document.getElementById("loginPasswordIcon");
 
 function validateLoginForm(event) {
     event.preventDefault();
@@ -20,7 +23,7 @@ function validateLoginForm(event) {
     }
 
     if (password === "") {
-        passwordInput.nextElementSibling.textContent = 'Поле почта не должно быть пустым.';
+        passwordInput.nextElementSibling.textContent = 'Поле пароль не должно быть пустым.';
         passwordInput.nextElementSibling.style.display = 'block';
         isValid = false;
     } else {
@@ -64,3 +67,20 @@ function validateRegisterForm() {
 
     return true;
 }
+
+
+emailInput.addEventListener('input', () => {
+    if (emailInput.value !== '') {
+      loginEmailIcon.style.display = 'none';
+    } else {
+      loginEmailIcon.style.display = 'block';
+    }
+  });
+
+  passwordInput.addEventListener('input', () => {
+    if (passwordInput.value !== '') {
+      loginPasswordIcon.style.display = 'none';
+    } else {
+      loginPasswordIcon.style.display = 'block';
+    }
+  });
