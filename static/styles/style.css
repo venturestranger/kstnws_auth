@@ -191,7 +191,7 @@ body {
     background: transparent;
     width: 122px;
     height: 11px;
-    margin: 8px 0px 0px auto;
+    margin-left: 190px;
     font-family: 'Mazzard M Medium';
     color: #ED5454;
     font-size: 16px;
@@ -211,6 +211,7 @@ body {
 
 .signInWithBtn {
     background-color: transparent;
+    display: flex;
     font-family: 'Mazzard M Medium';
     margin-top: 16px;
     border: 1px solid #B9B9B9;
@@ -224,14 +225,14 @@ body {
 
 .signInWithIcon {
     margin-left: 7px;
-    margin-top: 3.5px;
+    margin-top: 10px;
     width: 24px;
     height: 24px;
 }
 
 .signInWithCaption {
     position: relative;
-    bottom: 6px;
+    top: 12px;
     left: 5px;
 }
 
