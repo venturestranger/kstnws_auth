@@ -14,44 +14,27 @@
         <div class='logoContainer'>
             <img src='img/logo.png' class='logo'></img>
         </div>
-        <!-- Hello Again! -->
-        <h2 class='greeting'><%= dict[lang][greeting] %></h2>
-        <!-- Welcome to the Kostanay_Portal -->
-        <p class='greet'><%= dict[lang][greet] %></p>
-        <!-- This is a very good Portal -->
-        <p class='secondGreet'><%= dict[lang][secondGreet] %></p>
+        <h2 class='greeting'><%= dict[lang].greeting %></h2>
+        <p class='greet'><%= dict[lang].greet %></p>
         <form action="/login" method="post" id="loginForm" class='signForm'>
             <img src='img/dog.svg' class='inputIconEmail'></img>
             <img src='img/passwordIcon.svg' class='inputIconPassword'></img>
             <label class='labelEmail'>E-mail</label>
             <input class='input' type='email' id="emailInput" name="mail"></input>
             <span class="emailErrorMsg"></span>
-            <!-- Пароль -->
-            <label class='labelPassword'><%= dict[lang][labelPassword] %></label>
+            <label class='labelPassword'><%= dict[lang].labelPassword %></label>
             <input class='input' type='password' id="passwordInput" name="password"></input>
             <span class="passwordErrorMsg"></span>
-            <!-- Войти -->
-            <button class='signInBtn' type="submit"><%= dict[lang][signInBtn] %></button>
-            <!-- Забыли пароль? -->
-            <button class='forgotPasswordBtn'><%= dict[lang][forgotPasswordBtn] %></button>
+            <button class='signInBtn' type="submit"><%= dict[lang].signInBtn %></button>
+            <button class='forgotPasswordBtn'><%= dict[lang].forgotPasswordBtn %></button>
         </form>
         <div class='anotherOptions'>
-            <!-- Другие варианты входа: -->
-            <!-- Войти через Google - signWithGoogle -->
-            <!-- Войти через Facebook - signWithFacebook -->
-            <!-- Войти через VK - signWithVK -->
-            <p class='anotherOptionsCaption'><%= dict[lang][anotherOptionsCaption] %></p>
-            <button class='signInWithBtn'> <img src='img/googleIcon.svg' class='signInWithIcon'></img> <span
-                    class='signInWithCaption'><%= dict[lang][signWithGoogle] %></span></button>
-            <button class='signInWithBtn'> <img src='img/facebookIcon.svg' class='signInWithIcon'></img> <span
-                    class='signInWithCaption'><%= dict[lang][signWithFacebook] %></span></button>
-            <button class='signInWithBtn'> <img src='img/VKIcon.svg' class='signInWithIcon'></img> <span
-                    class='signInWithCaption'><%= dict[lang][signWithVK] %></span></button>
+            <p class='anotherOptionsCaption'><%= dict[lang].anotherOptionsCaption %></p>
+            <a class='signInWithBtn' href='/auth/google'> <img src='img/googleIcon.svg' class='signInWithIcon'></img> <span
+                    class='signInWithCaption'><%= dict[lang].signWithGoogle %></span></a>
         </div>
-        <!-- Нет аккаунта? -->
-        <p class='noAccountCaption'><%= dict[lang][noAccountCaption] %></p>
-        <!-- Зарегестрироваться -->
-        <button class='noAccountBtn'><%= dict[lang][noAccountBtn] %></button>
+        <p class='noAccountCaption'><%= dict[lang].noAccountCaption %></p>
+        <button class='noAccountBtn'><%= dict[lang].noAccountBtn %></button>
     </div>
     <script src="scripts/script.js"></script>
 </body>
