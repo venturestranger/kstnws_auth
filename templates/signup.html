@@ -41,15 +41,19 @@
                 </label>
                 <input class='surnameInput' type="text" id="surnameInput" name="second_name"></input>
             </div>
-            <img src='../static/img/dog.svg' class='inputRegIconEmail'></img>
-            <img src='../static/img/passwordIcon.svg' class='inputRegIconPassword'></img>
-            <label class='regLabelEmail'>E-mail</label>
-            <input class='inputReg' type='email' id="registerEmail" name="mail"></input>
-            <!-- Пароль -->
-            <label class='regLabelPassword'>
-                <%= dict[lang].regLabelPassword %>
-            </label>
-            <input class='inputReg' type='password' id="registerPassword" name="password"></input>
+            <div class="inputDiv">
+                <img src='../static/img/dog.svg' class='inputRegIcon' id="emailRegIcon"></img>
+                <label class='regLabelEmail'>E-mail</label>
+                <input class='inputReg' type='email' id="registerEmail" name="mail"></input>
+            </div>
+            <div class="inputDiv">
+                <img src='../static/img/passwordIcon.svg' class='inputRegIcon' id="passwordRegIcon"></img>
+                <!-- Пароль -->
+                <label class='regLabelPassword'>
+                    <%= dict[lang].regLabelPassword %>
+                </label>
+                <input class='inputReg' type='password' id="registerPassword" name="password"></input>
+            </div>
             <!-- Продолжить -->
             <button class='signInBtn'>
                 <%= dict[lang].signInBtn %>
@@ -85,7 +89,7 @@
                 </a>
         </span>
     </div>
-    <script src="../static/scripts/script.js"></script>
+    <script src="../static/scripts/signup.js"></script>
 </body>
 
 </html>

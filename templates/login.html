@@ -27,13 +27,13 @@
             <%= dict[lang].secondGreet %>
         </p>
         <form action="/login" method="post" id="loginForm" class='signForm'>
-            <div class="loginEmailInputDiv">
+            <div class="inputDiv">
                 <img src='../static/img/dog.svg' class='inputIconEmail' id="loginEmailIcon"></img>
                 <label class='labelEmail'>E-mail</label>
                 <input class='input' type='email' id="emailInput" name="mail"></input>
                 <span class="emailErrorMsg"></span>
             </div>
-            <div class="loginPasswordInputDiv">
+            <div class="inputDiv">
                 <img src='../static/img/passwordIcon.svg' class='inputIconPassword' id="loginPasswordIcon"></img>
                 <!-- Пароль -->
                 <label class='labelPassword'>
@@ -81,7 +81,7 @@
             <%= dict[lang].noAccountBtn %>
         </a>
     </div>
-    <script src="../static/scripts/script.js"></script>
+    <script src="../static/scripts/login.js"></script>
 </body>
 
 </html>

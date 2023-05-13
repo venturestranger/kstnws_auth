@@ -113,7 +113,7 @@ body {
     height: 24px;
 }
 
-.loginEmailInputDiv {
+.inputDiv {
     position: relative;
 }
 
@@ -126,10 +126,6 @@ body {
     max-width:fit-content;
     font-size: 12px;
     color: #707070; 
-}
-
-.loginPasswordInputDiv {
-    position: relative;
 }
 
 .labelPassword {
@@ -151,6 +147,12 @@ body {
     height: 44px;
     padding-left: 18px;
     margin-top: 16px;
+    margin-bottom: 10px;
+}
+
+.inputAdd:focus {
+    outline: none;
+    border: 2px solid #ED5454;
 }
 
 .emailErrorMsg {
@@ -160,7 +162,7 @@ body {
     color: #ED5454;
     font-size: 12px;
     top: 62px;
-    left: 130px;
+    left: 7px;
 }
 
 .passwordErrorMsg {
@@ -169,8 +171,8 @@ body {
     font-family: 'Mazzard M Medium';
     color: #ED5454;
     font-size: 12px;
-    top: 123px;
-    left: 124px;
+    top: 62px;
+    left: 7px;
 }
 
 .signInBtn {
@@ -316,7 +318,8 @@ body {
     left: 20px;
     top: 7px;
     background-color: white;
-    width: 34px;
+    width: auto;
+    max-width: fit-content;
     font-size: 12px;
     color: #707070; 
 }
@@ -326,7 +329,8 @@ body {
     left: 20px;
     top: 7px;
     background-color: white;
-    width: 40px;
+    width: auto;
+    max-width: fit-content;
     font-size: 12px;
     color: #707070;
 }
@@ -340,17 +344,9 @@ body {
     padding-left: 18px;
 }
 
-.inputRegIconEmail {
+.inputRegIcon {
     position: absolute;
-    top: 58px;
-    left: 300px;
-    width: 19px;
-    height: 24px;
-}
-
-.inputRegIconPassword {
-    position: absolute;
-    top: 110px;
+    top: 24px;
     left: 300px;
     width: 19px;
     height: 24px;
