@@ -282,6 +282,13 @@ body {
     padding-left: 18px;
 }
 
+.nameErrorMsg {
+    font-family: 'Mazzard M Medium';
+    color: #ED5454;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
 .nameInputDiv {
     position: relative;
 }
@@ -324,6 +331,13 @@ body {
     color: #707070; 
 }
 
+.regEmailErrorMsg {
+    font-family: 'Mazzard M Medium';
+    color: #ED5454;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
 .regLabelPassword {
     position: relative;
     left: 20px;
@@ -333,6 +347,13 @@ body {
     max-width: fit-content;
     font-size: 12px;
     color: #707070;
+}
+
+.regPasswordErrorMsg {
+    font-family: 'Mazzard M Medium';
+    color: #ED5454;
+    font-size: 12px;
+    margin-left: 10px;
 }
 
 .inputReg {

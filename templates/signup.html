@@ -26,7 +26,7 @@
         <p class='secondGreet'>
             <%= dict[lang].secondGreet %>
         </p>
-        <form action="/signup" method="post" class='signForm' onsubmit="return validateRegisterForm()">
+        <form action="/signup" method="post" class='signForm' id="signUpForm">
             <div class="nameInputDiv">
                 <!-- Имя -->
                 <label class='nameLabel'>
@@ -41,11 +41,13 @@
                 </label>
                 <input class='surnameInput' type="text" id="surnameInput" name="second_name"></input>
             </div>
+            <p class="nameErrorMsg"></p>
             <div class="inputDiv">
                 <img src='../static/img/dog.svg' class='inputRegIcon' id="emailRegIcon"></img>
                 <label class='regLabelEmail'>E-mail</label>
                 <input class='inputReg' type='email' id="registerEmail" name="mail"></input>
             </div>
+            <span class="regEmailErrorMsg"></span>
             <div class="inputDiv">
                 <img src='../static/img/passwordIcon.svg' class='inputRegIcon' id="passwordRegIcon"></img>
                 <!-- Пароль -->
@@ -54,6 +56,7 @@
                 </label>
                 <input class='inputReg' type='password' id="registerPassword" name="password"></input>
             </div>
+            <span class="regPasswordErrorMsg"></span>
             <!-- Продолжить -->
             <button class='signInBtn'>
                 <%= dict[lang].signInBtn %>
