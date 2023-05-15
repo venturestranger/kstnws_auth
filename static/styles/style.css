@@ -2,30 +2,37 @@
     font-family: 'Mazzard M Regular';
     src: url('fonts/MazzardM-Regular.ttf');
 }
+
 @font-face {
     font-family: 'Mazzard M Medium';
     src: url('fonts/MazzardM-Medium.ttf');
 }
+
 @font-face {
     font-family: 'Mazzard L Medium';
     src: url('fonts/MazzardL-Medium.ttf');
 }
+
 @font-face {
     font-family: 'Mazzard M Light';
     src: url('fonts/MazzardM-Light.ttf');
 }
+
 @font-face {
     font-family: 'Mazzard M SemiBold';
     src: url('fonts/MazzardM-SemiBold.ttf');
 }
+
 @font-face {
     font-family: 'Mazzard L SemiBold';
     src: url('fonts/MazzardL-SemiBold.ttf');
 }
+
 @font-face {
     font-family: 'Mazzard M Bold';
     src: url('fonts/MazzardM-Bold.ttf');
 }
+
 @font-face {
     font-family: 'Mazzard L Bold';
     src: url('fonts/MazzardL-Bold.ttf');
@@ -123,9 +130,9 @@ body {
     top: 8px;
     background-color: white;
     width: auto;
-    max-width:fit-content;
+    max-width: fit-content;
     font-size: 12px;
-    color: #707070; 
+    color: #707070;
 }
 
 .labelPassword {
@@ -270,7 +277,7 @@ body {
     width: auto;
     max-width: fit-content;
     font-size: 12px;
-    color: #707070; 
+    color: #707070;
 }
 
 .nameInput {
@@ -302,7 +309,7 @@ body {
     max-width: fit-content;
     font-size: 12px;
     color: #707070;
-    z-index: 1; 
+    z-index: 1;
 }
 
 .surnameInput {
@@ -328,7 +335,7 @@ body {
     width: auto;
     max-width: fit-content;
     font-size: 12px;
-    color: #707070; 
+    color: #707070;
 }
 
 .regEmailErrorMsg {
@@ -385,4 +392,50 @@ body {
     color: #547FED;
     font-size: 16px;
     cursor: pointer;
+}
+
+.statusDiv {
+    background-color: #F5F8FE;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Mazzard M Medium';
+    height: 100vh;
+}
+
+.statusWindow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border: 1px solid #EDF2FF;
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    width: 328px;
+    height: auto;
+}
+
+.statusImgContainer {
+    position: absolute;
+    top: -30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    width: 59px;
+    height: 59px;
+    border: 1px solid #EDF2FF;
+    border-radius: 50%;
+}
+
+.statusWindow p {
+    font-style: normal;
+    text-align: center;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #808080;
+    padding-top: 35px;
+    padding-bottom: 15px;
 }

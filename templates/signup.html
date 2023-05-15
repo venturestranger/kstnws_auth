@@ -22,10 +22,6 @@
         <p class='greet'>
             <%= dict[lang].greet %>
         </p>
-        <!-- This is a very good Portal -->
-        <p class='secondGreet'>
-            <%= dict[lang].secondGreet %>
-        </p>
         <form action="/signup" method="post" class='signForm' id="signUpForm">
             <div class="nameInputDiv">
                 <!-- Имя -->
@@ -52,7 +48,7 @@
                 <img src='../static/img/passwordIcon.svg' class='inputRegIcon' id="passwordRegIcon"></img>
                 <!-- Пароль -->
                 <label class='regLabelPassword'>
-                    <%= dict[lang].regLabelPassword %>
+                    <%= dict[lang].labelPassword %>
                 </label>
                 <input class='inputReg' type='password' id="registerPassword" name="password"></input>
             </div>
