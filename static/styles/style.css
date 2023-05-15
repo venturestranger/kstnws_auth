@@ -452,3 +452,7 @@ body {
     color: #547FED;
     background-color: #FFFFFF;
 }
+
+a {
+	text-decoration: none;
+}
