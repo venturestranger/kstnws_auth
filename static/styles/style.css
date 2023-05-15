@@ -200,6 +200,7 @@ body {
     background: transparent;
     width: 122px;
     height: 11px;
+    margin-top: 20px;
     margin-left: 190px;
     font-family: 'Mazzard M Medium';
     color: #ED5454;
@@ -436,6 +437,18 @@ body {
     font-size: 24px;
     line-height: 28px;
     color: #808080;
-    padding-top: 35px;
-    padding-bottom: 15px;
+    padding: 35px 15px 15px 15px;
+}
+
+.buttonDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
+    width: 328px;
+    height: 44px;
+    border-radius: 16px;
+    border: 1px solid #547FED;
+    color: #547FED;
+    background-color: #FFFFFF;
 }
