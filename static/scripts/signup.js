@@ -1,6 +1,6 @@
 const form = document.getElementById("signUpForm");
 const regEmailInput = document.getElementById("registerEmail");
-const regPasswordInput = document.getElementById("registerPassword");
+const regPasswordInput = document.querySelector("#registerPassword");
 const inputRegIcon = document.getElementById("emailRegIcon");
 const inputRegPassword = document.getElementById("passwordRegIcon");
 const firstNameInput = document.getElementById("nameInput");
@@ -55,17 +55,39 @@ function validateRegisterForm(event) {
     }
 
     const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{7,12}$/;
-    if (!regPasswordInputValue.match(passwordRegex)) {
-        regPasswordErrorMsg.textContent = 'Пароль должен содержать от 7 до 12 латинских символов, как минимум одну заглавную букву и одну цифру, без специальных символов.';
-        regPasswordInput.classList.add("inputAdd");
-        regPasswordInput.style.borderColor = "#ED5454";
-        anotherOptionsMargin = anotherOptionsMargin + 40;
-        isValid = false;
-    } else {
-        regPasswordInput.classList.remove("inputAdd");
-        regPasswordInput.style.borderColor = "#B9B9B9";
-        regPasswordErrorMsg.textContent = '';
-    }
+    
+    regPasswordInput.addEventListener('input', function() {
+        if (!this.value.match(passwordRegex)) {
+          let errorMessages = [];
+      
+          if (!/(?=.*\d)/.test(this.value)) {
+            errorMessages.push('Пароль должен содержать хотя бы одну цифру.');
+          }
+      
+          if (!/(?=.*[a-z])/.test(this.value)) {
+            errorMessages.push('Пароль должен содержать хотя бы одну строчную букву.');
+          }
+      
+          if (!/(?=.*[A-Z])/.test(this.value)) {
+            errorMessages.push('Пароль должен содержать хотя бы одну заглавную букву.');
+          }
+      
+          if (!/^[a-zA-Z0-9]{7,12}$/.test(this.value)) {
+            errorMessages.push('Пароль должен содержать от 7 до 12 латинских символов без специальных символов.');
+          }
+      
+          regPasswordErrorMsg.textContent = errorMessages.join(' ');
+          regPasswordInput.classList.add('inputAdd');
+          regPasswordInput.style.borderColor = '#ED5454';
+          anotherOptionsMargin += 40;
+          isValid = false;
+        } else {
+          regPasswordInput.classList.remove('inputAdd');
+          regPasswordInput.style.borderColor = '#B9B9B9';
+          regPasswordErrorMsg.textContent = '';
+          isValid = true;
+        }
+      });
 
     anotherOptionsDiv.style.marginTop = `${anotherOptionsMargin}px`
 
@@ -91,3 +113,4 @@ regPasswordInput.addEventListener('input', () => {
         inputRegPassword.style.display = 'block';
     }
 });
+
