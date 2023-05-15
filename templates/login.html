@@ -14,20 +14,34 @@
         <div class='logoContainer'>
             <img src='img/logo.png' class='logo'></img>
         </div>
-        <h2 class='greeting'><%= dict[lang].greeting %></h2>
-        <p class='greet'><%= dict[lang].greet %></p>
+        <h2 class='greeting'>
+            <%= dict[lang].greeting %>
+        </h2>
+        <p class='greet'>
+            <%= dict[lang].greet %>
+        </p>
         <form action="/auth/login" method="post" id="loginForm" class='signForm'>
-            <img src='img/dog.svg' class='inputIconEmail'></img>
-            <img src='img/passwordIcon.svg' class='inputIconPassword'></img>
-            <label class='labelEmail'>E-mail</label>
-            <input class='input' type='email' id="emailInput" name="mail"></input>
-            <span class="emailErrorMsg"></span>
-            <label class='labelPassword'><%= dict[lang].labelPassword %></label>
-            <input class='input' type='password' id="passwordInput" name="password"></input>
-            <span class="passwordErrorMsg"></span>
-            <button class='signInBtn' type="submit"><%= dict[lang].signInBtn %></button>
-            <button class='forgotPasswordBtn'><%= dict[lang].forgotPasswordBtn %></button>
+            <div class="inputDiv">
+                <img src='img/dog.svg' class='inputIconEmail' id="loginEmailIcon"></img>
+                <label class='labelEmail'>E-mail</label>
+                <input class='input' type='email' id="emailInput" name="mail"></input>
+                <span class="emailErrorMsg"></span>
+            </div>
+            <div class="inputDiv">
+                <img src='img/passwordIcon.svg' class='inputIconPassword' id="loginPasswordIcon"></img>
+                <label class='labelPassword'>
+                    <%= dict[lang].labelPassword %>
+                </label>
+                <input class='input' type='password' id="passwordInput" name="password"></input>
+                <span class="passwordErrorMsg"></span>
+            </div>
+            <button class='signInBtn' type="submit">
+                <%= dict[lang].signInBtn %>
+            </button>
         </form>
+        <a class='forgotPasswordBtn'>
+            <%= dict[lang].forgotPasswordBtn %>
+        </a>
         <div class='anotherOptions'>
             <p class='anotherOptionsCaption'><%= dict[lang].anotherOptionsCaption %></p>
             <a class='signInWithBtn' href='/auth/google'> <img src='img/googleIcon.svg' class='signInWithIcon'></img> <span

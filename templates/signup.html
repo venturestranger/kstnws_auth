@@ -14,53 +14,53 @@
         <div class='logoContainer'>
             <img src='img/logo.png' class='logo'></img>
         </div>
-        <!-- Hello Again! -->
         <h2 class='greeting'>
             <%= dict[lang].greeting %>
         </h2>
-        <!-- Welcome to the Kostanay_Portal -->
         <p class='greet'>
             <%= dict[lang].greet %>
         </p>
-        <!-- This is a very good Portal -->
-        <form action="/auth/signup" method="post" class='signForm' onsubmit="return validateRegisterForm()">
-            <!-- Имя -->
-            <label class='nameLabel'>
-                <%= dict[lang].nameLabel %>
-            </label>
-            <input class='nameInput' type="text" id="nameInput" name="name"></input>
-            <!-- Фамилия -->
-            <label class='surnameLabel'>
-                <%= dict[lang].surnameLabel %>
-            </label>
-            <input class='surnameInput' type="text" id="surnameInput" name="second_name"></input>
-            <img src='img/dog.svg' class='inputRegIconEmail'></img>
-            <img src='img/passwordIcon.svg' class='inputRegIconPassword'></img>
-            <label class='regLabelEmail'>E-mail</label>
-            <input class='inputReg' type='email' id="registerEmail" name="mail"></input>
-            <!-- Пароль -->
-            <label class='regLabelPassword'>
-                <%= dict[lang].labelPassword %>
-            </label>
-            <input class='inputReg' type='password' id="registerPassword" name="password"></input>
-            <!-- Продолжить -->
+        <form action="/auth/signup" method="post" class='signForm' id="signUpForm">
+            <div class="nameInputDiv">
+                <label class='nameLabel'>
+                    <%= dict[lang].nameLabel %>
+                </label>
+                <input class='nameInput' type="text" id="nameInput" name="name"></input>
+            </div>
+            <div class="surnameInputDiv">
+                <label class='surnameLabel'>
+                    <%= dict[lang].surnameLabel %>
+                </label>
+                <input class='surnameInput' type="text" id="surnameInput" name="second_name"></input>
+            </div>
+            <p class="nameErrorMsg"></p>
+            <div class="inputDiv">
+                <img src='img/dog.svg' class='inputRegIcon' id="emailRegIcon"></img>
+                <label class='regLabelEmail'>E-mail</label>
+                <input class='inputReg' type='email' id="registerEmail" name="mail"></input>
+            </div>
+            <span class="regEmailErrorMsg"></span>
+            <div class="inputDiv">
+                <img src='img/passwordIcon.svg' class='inputRegIcon' id="passwordRegIcon"></img>
+                <label class='regLabelPassword'>
+                    <%= dict[lang].labelPassword %>
+                </label>
+                <input class='inputReg' type='password' id="registerPassword" name="password"></input>
+            </div>
+            <span class="regPasswordErrorMsg"></span>
             <button class='signInBtn'>
                 <%= dict[lang].signInBtn %>
             </button>
         </form>
         <div class='anotherOptions'>
-            <!-- Другие варианты входа -->
             <p class='anotherOptionsCaption'>
                 <%= dict[lang].anotherOptionsCaption %>
             </p>
-            <!-- Войти через Google -->
             <a href="/auth/google" class='signInWithBtn'> <img src='img/googleIcon.svg' class='signInWithIcon'></img>
                 <span class='signInWithCaption'>
                     <%= dict[lang].signWithGoogle %>
                 </span></a>
         </div>
-        <!-- Уже есть аккаунт? -->
-        <!-- Войти -->
         <span class='haveAccountCaption'>
             <%= dict[lang].haveAccountCaption %>
                 <a class='returnToSignUpBtn' href="/auth/login"><%= dict[lang].returnToSignUpBtn %></a>
