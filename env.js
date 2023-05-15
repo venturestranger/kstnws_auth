@@ -12,7 +12,11 @@ const env = {
 
 	GOOGLE_CLIENT_ID: '484591857221-6acq88tleltg8c0eaa7vob7ic6sq9elq.apps.googleusercontent.com',
 	GOOGLE_CLIENT_SECRET: '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',
-	GOOGLE_REDIRECT_URI: 'http://tvoykostanay.kz/auth/google/callback'
+	GOOGLE_REDIRECT_URI: 'http://tvoykostanay.kz/auth/google/callback',
+
+	OK: 1,
+	INFO: 2,
+	BAD: 3
 }
 
 module.exports = env

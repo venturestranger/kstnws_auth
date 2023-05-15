@@ -24,7 +24,7 @@ const registerSignupAttempt = function(req, res, next) {
 			res.cookie("signupAttempts", attempts + 1, {expiresIn: env.SIGNUP_LOCK})
 			next()
 		} else 
-			res.render("status", {lang: req.cookies.lang, dict: dict, msgs: ["429"]})
+			res.render("status", {stts: env.BAD, lang: req.cookies.lang, dict: dict, msgs: ["429"]})
 	} else {
 		res.cookie("signupAttempts", 0, {expiresIn: env.SIGNUP_LOCK})
 		next()
@@ -38,7 +38,7 @@ const registerLoginAttempt = function(req, res, next) {
 			res.cookie("loginAttempts", attempts + 1, {expiresIn: env.LOGIN_LOCK})
 			next()
 		} else 
-			res.render("status", {lang: req.cookies.lang, dict: dict, msgs: ["429"]})
+			res.render("status", {stts: env.BAD, lang: req.cookies.lang, dict: dict, msgs: ["429"]})
 	} else {
 		res.cookie("loginAttempts", 0, {expiresIn: env.LOGIN_LOCK})
 		next()
@@ -49,7 +49,7 @@ const verifyPage = function(req, res, mail) {
 	res.cookie("mail", mail, {signed: true, maxAge: 3600000})
 	let token = jwt.sign({mail: mail}, env.SECRET_KEY, {expiresIn: "1h"})
 	// utils.sendVerification(mail, token)
-	res.render("status", {lang: req.cookies.lang, dict: dict, msgs: [`token-sent`, token]})
+	res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: [`token-sent`, token]})
 }
 
 app.get("/", (req, res)=>{
@@ -59,7 +59,7 @@ app.get("/", (req, res)=>{
 app.get("/verify/:link", (req, res) => {
 	jwt.verify(req.params.link, env.SECRET_KEY, async (err, payload) => {
 		if (err) 
-			res.render("status", {lang: req.cookies.lang, dict: dict, msgs: ["NOTVER"]})
+			res.render("status", {stts: env.INFO, lang: req.cookies.lang, dict: dict, msgs: ["NOTVER"]})
 		else {
 			let mail = req.signedCookies.mail
 			if (payload.mail == mail) 
@@ -93,19 +93,19 @@ app.get("/verify/:link", (req, res) => {
 							})
 								.then(resp => {
 									res.cookie("id", user.id, {signed: true})
-									res.render("status", {lang: req.cookies.lang, dict: dict, msgs: ["VER"]})
+									res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: ["VER"]})
 								})
 								.catch(err => {
-									res.render("status", {lang: req.cookies.lang, dict: dict, msgs: ["500"]})
+									res.render("status", {stts: env.BAD, lang: req.cookies.lang, dict: dict, msgs: ["500"]})
 								})
 						} else 
-							res.render("status", {lang: req.cookies.lang, dict: dict, msgs: ["401"]})
+							res.render("status", {stts: env.BAD, lang: req.cookies.lang, dict: dict, msgs: ["401"]})
 					})
 					.catch(err => {
-						res.render("status", {lang: req.cookies.lang, dict: dict, msgs: ["500"]})
+						res.render("status", {stts: env.BAD, lang: req.cookies.lang, dict: dict, msgs: ["500"]})
 					})
 			else
-				res.render("status", {lang: req.cookies.lang, dict: dict, msgs: ["401"]})
+				res.render("status", {stts: env.BAD, lang: req.cookies.lang, dict: dict, msgs: ["401"]})
 		} 
 	})
 }) 
@@ -132,14 +132,14 @@ app.route("/login")
 						verifyPage(req, res, mail)
 					else if (utils.compareHash(password, user.password)) {
 						res.cookie("id", user.id, {signed: true})
-						res.render("status", {lang: req.cookies.lang, dict: dict, msgs: ["200"]})
+						res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: ["200"]})
 					} else 
-						res.render("status", {lang: req.cookies.lang, dict: dict, msgs: ["401"]})
+						res.render("status", {stts: env.BAD, lang: req.cookies.lang, dict: dict, msgs: ["401"]})
 				} else 
-					res.render("status", {lang: req.cookies.lang, dict: dict, msgs: ["401"]})
+					res.render("status", {stts: env.BAD, lang: req.cookies.lang, dict: dict, msgs: ["401"]})
 			})
 			.catch(err => {
-				res.render("status", {lang: req.cookies.lang, dict: dict, msgs: ["500"]})
+				res.render("status", {stts: env.BAD, lang: req.cookies.lang, dict: dict, msgs: ["500"]})
 			})
 	})
 
@@ -199,11 +199,11 @@ app.route("/signup")
 							verifyPage(req, res, mail)
 						})
 						.catch(err => {
-							res.render("status", {lang: req.cookies.lang, dict: dict, msgs: ["500"]})
+							res.render("status", {stts: env.BAD, lang: req.cookies.lang, dict: dict, msgs: ["500"]})
 						})
 			})
 			.catch(err => {
-				res.render("status", {lang: req.cookies.lang, dict: dict, msgs: ["500"]})
+				res.render("status", {stts: env.BAD, lang: req.cookies.lang, dict: dict, msgs: ["500"]})
 			})
 	})
 

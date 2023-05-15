@@ -17,7 +17,6 @@ app.get("/auth/facebook", (req, res) => {
 	axios.get(url)
 		.then(resp => {
 			consoole.log(resp)
-
 		})
 		.catch(err => {
 			res.send("Error")

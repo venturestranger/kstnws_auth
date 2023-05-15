@@ -28,7 +28,7 @@ const recursiveAuth = async function(req, res, user) {
 				let user = resp.data[0]
 				if (user.password.startsWith("google:")) {
 					res.cookie("id", user.id, {signed: true})
-					res.render("status", {lang: req.cookies.lang, dict: dict, msgs: ["200"]})
+					res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: ["200"]})
 				} else
 					res.redirect("/auth/login")
 			} else 
@@ -56,11 +56,11 @@ const recursiveAuth = async function(req, res, user) {
 						recursiveAuth(req, res, user)
 					})
 					.catch(err => {
-						res.render("status", {lang: req.cookies.lang, dict: dict, msgs: ["500"]})
+						res.render("status", {stts: env.BAD, lang: req.cookies.lang, dict: dict, msgs: ["500"]})
 					})
 		})
 		.catch(err => {
-			res.render("status", {lang: req.cookies.lang, dict: dict, msgs: ["500"]})
+			res.render("status", {stts: env.BAD, lang: req.cookies.lang, dict: dict, msgs: ["500"]})
 		})
 }
 
