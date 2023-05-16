@@ -33,13 +33,23 @@
                 </label>
                 <input class='surnameInput' type="text" id="surnameInput" name="second_name"></input>
             </div>
-            <p class="nameErrorMsg"></p>
+            <ul class="nameErrorMsg" id="nameEmptyErrorMsg">
+                <li>Заполните поле Имя, Фамилия</li>
+            </ul>
+            <ul class="nameErrorMsg" id="nameErrorMsg">
+                <li>Латинские или кириллические символы</li>
+            </ul>
             <div class="inputDiv">
                 <img src='img/dog.svg' class='inputRegIcon' id="emailRegIcon"></img>
                 <label class='regLabelEmail'>E-mail</label>
-                <input class='inputReg' type='email' id="registerEmail" name="mail"></input>
+                <input class='inputReg' type='text' id="registerEmail" name="mail"></input>
             </div>
-            <ul class="regEmailErrorMsg"></ul>
+            <ul class="regEmptyEmailErrorMsg">
+                <li>Заполните поле</li>
+            </ul>
+            <ul class="regNotValidEmailErr">
+                <li>Неверный формат почты</li>
+            </ul>
             <div class="inputDiv">
                 <img src='img/passwordIcon.svg' class='inputRegIcon' id="passwordRegIcon"></img>
                 <label class='regLabelPassword'>
@@ -68,7 +78,9 @@
         </div>
         <span class='haveAccountCaption'>
             <%= dict[lang].haveAccountCaption %>
-                <a class='returnToSignUpBtn' href="/auth/login"><%= dict[lang].returnToSignUpBtn %></a>
+                <a class='returnToSignUpBtn' href="/auth/login">
+                    <%= dict[lang].returnToSignUpBtn %>
+                </a>
         </span>
     </div>
     <script src="../static/scripts/signup.js"></script>

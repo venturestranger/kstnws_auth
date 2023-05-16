@@ -211,6 +211,7 @@ body {
     display: flex;
     flex-direction: column;
     width: 328px;
+    margin-top: 40px;
 }
 
 .anotherOptionsCaption {
@@ -291,10 +292,10 @@ body {
 }
 
 .nameErrorMsg {
+    display: none;
     font-family: 'Mazzard M Medium';
-    color: #ED5454;
     font-size: 12px;
-    margin-left: 10px;
+    margin-left: 16px;
 }
 
 .nameInputDiv {
@@ -339,11 +340,18 @@ body {
     color: #707070;
 }
 
-.regEmailErrorMsg {
+.regEmptyEmailErrorMsg {
+    display: none;
     font-family: 'Mazzard M Medium';
-    color: #ED5454;
     font-size: 12px;
-    margin-left: 10px;
+    margin-left: 16px;
+}
+
+.regNotValidEmailErr {
+    display: none;
+    font-family: 'Mazzard M Medium';
+    font-size: 12px;
+    margin-left: 18px;
 }
 
 .regLabelPassword {

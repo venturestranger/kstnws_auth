@@ -6,13 +6,16 @@ const inputRegPassword = document.getElementById("passwordRegIcon");
 const firstNameInput = document.getElementById("nameInput");
 const lastNameInput = document.getElementById("surnameInput");
 const regPasswordInputValue = document.getElementById("registerPassword").value;
-const nameErrorMsg = document.querySelector(".nameErrorMsg");
-const regEmailErrorMsg = document.querySelector(".regEmailErrorMsg");
+const nameErrorMsg = document.querySelector("#nameErrorMsg");
+const nameEmptyErrorMsg = document.querySelector("#nameEmptyErrorMsg");
+const emptyEmail = document.querySelector(".regEmptyEmailErrorMsg");
 const regPasswordErrorMsg = document.querySelector(".regPasswordErrorMsg");
+const emailNotValidMsg = document.querySelector(".regNotValidEmailErr");
 
 const anotherOptionsDiv = document.querySelector(".anotherOptions");
 
 const nameRegex = /^[A-ZА-Я][a-zа-я]{0,29}$/;
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{6,16}$/;
 
 function validateRegisterForm(event) {
@@ -27,38 +30,22 @@ function validateRegisterForm(event) {
 
 
   if (!firstName.match(nameRegex) || !lastName.match(nameRegex)) {
-    nameErrorMsg.textContent = 'Имя и Фамилия должны содержать только латинские или кириллические символы.';
-    firstNameInput.classList.add("inputAdd");
-    firstNameInput.style.borderColor = "#ED5454";
-    lastNameInput.classList.add("inputAdd");
-    lastNameInput.style.borderColor = "#ED5454";
     anotherOptionsMargin = anotherOptionsMargin + 30;
     isValid = false;
-  } else {
-    nameErrorMsg.textContent = '';
-    firstNameInput.classList.remove("inputAdd");
-    firstNameInput.style.borderColor = "#B9B9B9";
-    lastNameInput.classList.remove("inputAdd");
-    lastNameInput.style.borderColor = "#B9B9B9";
-  }
+  } 
 
   if (firstName.trim() === "" || lastName.trim() === "") {
-    nameErrorMsg.textContent = 'Поля Имя и Фамилия не должны быть пустыми.';
     isValid = false;
   }
 
   if (regEmailInputValue.trim() === "") {
-    regEmailErrorMsg.textContent = 'Поле почта не должно быть пустым.';
-    regEmailInput.classList.add("inputAdd");
-    regEmailInput.style.borderColor = "#ED5454";
     anotherOptionsMargin = anotherOptionsMargin + 10;
     isValid = false;
-  } else {
-    regEmailInput.classList.remove("inputAdd");
-    regEmailInput.style.borderColor = "#B9B9B9";
-    regEmailErrorMsg.textContent = '';
-  }
+  } 
 
+  if (!regEmailInputValue.match(emailRegex)) {
+    isValid = false;
+  }
 
   if (!regPasswordInput.value.match(passwordRegex)) {
     anotherOptionsMargin += 40;
@@ -66,7 +53,6 @@ function validateRegisterForm(event) {
   } 
 
   anotherOptionsDiv.style.marginTop = `${anotherOptionsMargin}px`
-  regPasswordInput.removeEventListener('click', validatePassword);
   if (isValid) {
     form.submit();
   }
@@ -78,14 +64,12 @@ function validatePassword() {
   regPasswordInput.addEventListener('input', function() {
     const requirementsList = document.getElementById('passwordRequirements');
     const requirementItems = requirementsList.getElementsByTagName('li');
-    const errorMessages = [];
     let hasErrors = false;
   
     // Проверка каждого требования пароля
     if (!/(?=.*\d)/.test(this.value)) {
       requirementItems[2].classList.remove('success');
       requirementItems[2].classList.add('fail');
-      errorMessages.push('Минимум одна цифра');
       hasErrors = true;
     } else {
       requirementItems[2].classList.remove('fail');
@@ -95,7 +79,6 @@ function validatePassword() {
     if (!/(?=.*[A-Z])/.test(this.value)) {
       requirementItems[1].classList.remove('success');
       requirementItems[1].classList.add('fail');
-      errorMessages.push('Заглавная буква');
       hasErrors = true;
     } else {
       requirementItems[1].classList.remove('fail');
@@ -105,7 +88,6 @@ function validatePassword() {
     if (!/^[a-zA-Z0-9]{6,16}$/.test(this.value)) {
       requirementItems[0].classList.remove('success');
       requirementItems[0].classList.add('fail');
-      errorMessages.push('От 6 до 16 латинских символов');
       hasErrors = true;
     } else {
       requirementItems[0].classList.remove('fail');
@@ -115,7 +97,6 @@ function validatePassword() {
     if (!/^[a-zA-Z0-9]+$/.test(this.value)) {
       requirementItems[3].classList.remove('success');
       requirementItems[3].classList.add('fail');
-      errorMessages.push('Без специальных символов');
       hasErrors = true;
     } else {
       requirementItems[3].classList.remove('fail');
@@ -134,17 +115,61 @@ function validatePassword() {
   });
 }
 
-// function validateEmail() {
-//   regEmailInput.addEventListener('input', function() {
+function validateEmail() {
+  regEmailInput.addEventListener('input', function() {
+    if (regEmailInput.value.trim() === "") {
+      emptyEmail.classList.add("fail")
+      emptyEmail.classList.remove("success")
+      emptyEmail.style.display = "block";
+      regEmailInput.classList.add("inputAdd");
+      regEmailInput.style.borderColor = "#ED5454";
+    } else {
+      emailNotValidMsg.style.display = "none";
+      regEmailInput.classList.remove("inputAdd");
+      emptyEmail.style.display = "none";
+      regEmailInput.style.borderColor = "#B9B9B9";
+      emptyEmail.classList.remove("fail")
+    }    
+  })
+}
 
-//   })
-// }
+function eventListinerToNames() {
+  firstNameInput.addEventListener('input', validateNames);
+  lastNameInput.addEventListener('input', validateNames);
+}
+
+function validateNames() {
+  if (!firstNameInput.value.match(nameRegex) || !lastNameInput.value.match(nameRegex)) {
+    nameErrorMsg.style.display = "block";
+    nameErrorMsg.classList.add("fail")
+    firstNameInput.classList.add("inputAdd");
+    firstNameInput.style.borderColor = "#ED5454";
+    lastNameInput.classList.add("inputAdd");
+    lastNameInput.style.borderColor = "#ED5454";
+  } else {
+    nameErrorMsg.style.display = "none";
+    firstNameInput.classList.remove("inputAdd");
+    firstNameInput.style.borderColor = "#B9B9B9";
+    lastNameInput.classList.remove("inputAdd");
+    lastNameInput.style.borderColor = "#B9B9B9";
+  }
+
+  if (firstNameInput.value.trim() === "" && lastNameInput.value.trim() === "") {
+    nameEmptyErrorMsg.style.display = "block";
+    nameEmptyErrorMsg.classList.add("fail")
+  } else {
+    nameEmptyErrorMsg.style.display = "none";
+  }
+}
 
 function handleInputBlur() {
   regPasswordInput.classList.remove('inputAdd');
   regPasswordInput.style.borderColor = '#B9B9B9';
 }
 
+firstNameInput.addEventListener('click', eventListinerToNames);
+lastNameInput.addEventListener('click', eventListinerToNames);
+regEmailInput.addEventListener('click', validateEmail);
 regPasswordInput.addEventListener('click', validatePassword);
 regPasswordInput.addEventListener('blur', handleInputBlur);
 
