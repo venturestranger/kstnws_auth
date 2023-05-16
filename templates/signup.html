@@ -39,7 +39,7 @@
                 <label class='regLabelEmail'>E-mail</label>
                 <input class='inputReg' type='email' id="registerEmail" name="mail"></input>
             </div>
-            <span class="regEmailErrorMsg"></span>
+            <ul class="regEmailErrorMsg"></ul>
             <div class="inputDiv">
                 <img src='img/passwordIcon.svg' class='inputRegIcon' id="passwordRegIcon"></img>
                 <label class='regLabelPassword'>
@@ -47,7 +47,12 @@
                 </label>
                 <input class='inputReg' type='password' id="registerPassword" name="password"></input>
             </div>
-            <span class="regPasswordErrorMsg"></span>
+            <ul class="regPasswordErrorMsg" id="passwordRequirements">
+                <li>От 6 до 16 латинских символов</li>
+                <li>Заглавная буква</li>
+                <li>Минимум одна цифра</li>
+                <li>Без специальных символов</li>
+            </ul>
             <button class='signInBtn'>
                 <%= dict[lang].signInBtn %>
             </button>
@@ -66,7 +71,7 @@
                 <a class='returnToSignUpBtn' href="/auth/login"><%= dict[lang].returnToSignUpBtn %></a>
         </span>
     </div>
-    <script src="scripts/script.js"></script>
+    <script src="scripts/signup.js"></script>
 </body>
 
 </html>
