@@ -1,28 +1,53 @@
 const express = require("express")
+const axios = require("axios")
+const utils = require("./utils.js")
+const env = require("./env")
 
 app = express()
-FACEBOOK_URL = `https://www.facebook.com/v4.0/dialog/oauth?$`
-FACEBOOK_APP_ID = ""
 
-app.get("/auth/facebook", (req, res) => {
-	const params = queryString.stringify({
-		client_id: FACEBOOK_APP_ID,
-		redirect_uri: 'https://www.example.com/authenticate/facebook/',
-		scope: ['email', 'user_friends'].join(','), // comma seperated string
-		response_type: 'code',
-		auth_type: 'rerequest',
-		display: 'popup',
-	});
-	const url = FACEBOOK_URL + params
-	axios.get(url)
-		.then(resp => {
-			consoole.log(resp)
-		})
-		.catch(err => {
-			res.send("Error")
-		})
+app.get("/facebook", async (req, res) => {
+	let params = {
+		client_id: env.FACEBOOK_APP_ID,
+		redirect_uri: encodeURIComponent(env.FACEBOOK_REDIRECT_URL),
+		scope: "email",
+		response_type: "code",
+		auth_type: "rerequest",
+		display: "popup"
+	}
+
+	const url = env.FACEBOOK_URL + utils.stringifyParams(params)
+	res.redirect(url)
 }) 
 
-app.listen(3000, ()=> {
-	console.log("listening")
+app.get("/facebook/callback", async (req, res) => {
+	const code = req.query.code
+	await axios({
+		url: "https://graph.facebook.com/v4.0/oauth/access_token",
+		method: "get",
+		params: {
+			client_id: env.FACEBOOK_APP_ID,
+			client_secret: env.FACEBOOK_APP_SECRET,
+			redirect_uri: "/auth/facebook/callback",
+			code: code
+		},
+	})
+		.then(async resp => {
+			const { user } = await axios({
+				url: 'https://graph.facebook.com/me',
+				method: 'get',
+				params: {
+					fields: ['id', 'email', 'first_name', 'last_name'].join(','),
+					access_token: data.accesstoken,
+				},
+			})
+
+			console.log(user)
+			//utils.thirdPartyAuth(req, res, data, "facebook")
+			res.send("success")
+		})
+		.catch(resp => {
+			res.send("error")
+		})
 })
+
+module.exports = app
