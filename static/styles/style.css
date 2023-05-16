@@ -58,7 +58,7 @@ body {
 }
 
 .logoContainer {
-    background-image: url(img/border.svg);
+    background-image: url(../img/border.svg);
     width: 80px;
     height: 80px;
     display: flex;
@@ -367,13 +367,13 @@ body {
 .fail {
     color: #ED5454;
     list-style-type: none;
-    list-style-image: url(img/failAttemp.svg);
+    list-style-image: url(../img/failAttemp.svg);
 }
 
 .success {
     color: #7DD19A;
     list-style-type: none;
-    list-style-image: url(img/successAttemp.svg);
+    list-style-image: url(../img/successAttemp.svg);
 }
 
 .regPasswordErrorMsg li {
