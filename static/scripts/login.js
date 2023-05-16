@@ -26,9 +26,14 @@ function validateLoginForm(event) {
         emailInput.style.borderColor = "#B9B9B9";
     }
 
-    const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{7,12}$/;
-    if (!password.match(passwordRegex)) {
-        passwordInput.nextElementSibling.textContent = 'Неверный формат пароля';
+    if (password.length > 50) {
+        passwordInput.nextElementSibling.textContent = 'Слишком большой пароль';
+        passwordInput.nextElementSibling.style.display = 'block';
+        passwordInput.classList.add("inputAdd");
+        passwordInput.style.borderColor = "#ED5454";
+        isValid = false;
+    } else if (password.length < 1) {
+        passwordInput.nextElementSibling.textContent = 'Заполните поле';
         passwordInput.nextElementSibling.style.display = 'block';
         passwordInput.classList.add("inputAdd");
         passwordInput.style.borderColor = "#ED5454";

@@ -358,10 +358,26 @@ body {
 }
 
 .regPasswordErrorMsg {
+    display: none;
     font-family: 'Mazzard M Medium';
-    color: #ED5454;
     font-size: 12px;
-    margin-left: 10px;
+    margin-left: 16px;
+}
+
+.fail {
+    color: #ED5454;
+    list-style-type: none;
+    list-style-image: url(../img/failAttemp.svg);
+}
+
+.success {
+    color: #7DD19A;
+    list-style-type: none;
+    list-style-image: url(../img/successAttemp.svg);
+}
+
+.regPasswordErrorMsg li {
+    padding-left: 3.5px;
 }
 
 .inputReg {
@@ -449,6 +465,10 @@ body {
     height: 44px;
     border-radius: 16px;
     border: 1px solid #547FED;
-    color: #547FED;
     background-color: #FFFFFF;
+}
+
+.buttonDiv a {
+    color: #547FED;
+    text-decoration: none;
 }
