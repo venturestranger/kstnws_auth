@@ -1,6 +1,8 @@
 const nodemailer = require("nodemailer")
 const bcrypt = require("bcrypt")
-const env = require("./env")
+const axios = require("axios")
+const env = require("./env.js")
+const dict = require("./locale.js")
 
 const salt = bcrypt.genSaltSync(env.SALT_ROUNDS)
 
