@@ -26,33 +26,40 @@ function validateRegisterForm(event) {
   const regEmailInputValue = document.getElementById("registerEmail").value;
 
   let isValid = true;
-  let anotherOptionsMargin = 0;
 
 
   if (!firstName.match(nameRegex) || !lastName.match(nameRegex)) {
-    anotherOptionsMargin = anotherOptionsMargin + 30;
+    validateNames();
     isValid = false;
-  } 
+  }
 
   if (firstName.trim() === "" || lastName.trim() === "") {
+    validateNames();
     isValid = false;
   }
 
   if (regEmailInputValue.trim() === "") {
-    anotherOptionsMargin = anotherOptionsMargin + 10;
-    isValid = false;
-  } 
-
-  if (!regEmailInputValue.match(emailRegex)) {
+    validateEmail();
     isValid = false;
   }
 
-  if (!regPasswordInput.value.match(passwordRegex)) {
-    anotherOptionsMargin += 40;
+  if (!regEmailInputValue.match(emailRegex)) {
+    validateEmail();
+    emailNotValidMsg.style.display = "block";
+    emailNotValidMsg.classList.add("fail");
+    regEmailInput.classList.add("inputAdd");
+    regEmailInput.style.borderColor = "#ED5454";
     isValid = false;
-  } 
+  } else {
+    emailNotValidMsg.style.display = "none";
+    validateEmail();
+  }
 
-  anotherOptionsDiv.style.marginTop = `${anotherOptionsMargin}px`
+  if (!regPasswordInput.value.match(passwordRegex)) {
+    validatePassword();
+    isValid = false;
+  }
+
   if (isValid) {
     form.submit();
   }
@@ -61,77 +68,93 @@ function validateRegisterForm(event) {
 form.addEventListener('submit', validateRegisterForm);
 
 function validatePassword() {
-  regPasswordInput.addEventListener('input', function() {
-    const requirementsList = document.getElementById('passwordRequirements');
-    const requirementItems = requirementsList.getElementsByTagName('li');
-    let hasErrors = false;
-  
-    // Проверка каждого требования пароля
-    if (!/(?=.*\d)/.test(this.value)) {
-      requirementItems[2].classList.remove('success');
-      requirementItems[2].classList.add('fail');
-      hasErrors = true;
-    } else {
-      requirementItems[2].classList.remove('fail');
-      requirementItems[2].classList.add('success');
-    }
-  
-    if (!/(?=.*[A-Z])/.test(this.value)) {
-      requirementItems[1].classList.remove('success');
-      requirementItems[1].classList.add('fail');
-      hasErrors = true;
-    } else {
-      requirementItems[1].classList.remove('fail');
-      requirementItems[1].classList.add('success');
-    }
-  
-    if (!/^[a-zA-Z0-9]{6,16}$/.test(this.value)) {
-      requirementItems[0].classList.remove('success');
-      requirementItems[0].classList.add('fail');
-      hasErrors = true;
-    } else {
-      requirementItems[0].classList.remove('fail');
-      requirementItems[0].classList.add('success');
-    }
-  
-    if (!/^[a-zA-Z0-9]+$/.test(this.value)) {
-      requirementItems[3].classList.remove('success');
-      requirementItems[3].classList.add('fail');
-      hasErrors = true;
-    } else {
-      requirementItems[3].classList.remove('fail');
-      requirementItems[3].classList.add('success');
-    }
-  
-    if (hasErrors) {
-      requirementsList.style.display = 'block';
-      regPasswordInput.classList.add('inputAdd');
-      regPasswordInput.style.borderColor = '#ED5454';
-    } else {
-      requirementsList.style.display = 'none';
-      regPasswordInput.classList.remove('inputAdd');
-      regPasswordInput.style.borderColor = '#B9B9B9'; 
-    }
-  });
+  const requirementsList = document.getElementById('passwordRequirements');
+  const requirementItems = requirementsList.getElementsByTagName('li');
+  let hasErrors = false;
+
+  // Проверка каждого требования пароля
+  if (!/(?=.*\d)/.test(this.value)) {
+    requirementItems[2].classList.remove('success');
+    requirementItems[2].classList.add('fail');
+    hasErrors = true;
+  } else {
+    requirementItems[2].classList.remove('fail');
+    requirementItems[2].classList.add('success');
+  }
+
+  if (!/(?=.*[A-Z])/.test(this.value)) {
+    requirementItems[1].classList.remove('success');
+    requirementItems[1].classList.add('fail');
+    hasErrors = true;
+  } else {
+    requirementItems[1].classList.remove('fail');
+    requirementItems[1].classList.add('success');
+  }
+
+  if (!/^[a-zA-Z0-9]{6,16}$/.test(this.value)) {
+    requirementItems[0].classList.remove('success');
+    requirementItems[0].classList.add('fail');
+    hasErrors = true;
+  } else {
+    requirementItems[0].classList.remove('fail');
+    requirementItems[0].classList.add('success');
+  }
+
+  if (!/^[a-zA-Z0-9]+$/.test(this.value)) {
+    requirementItems[3].classList.remove('success');
+    requirementItems[3].classList.add('fail');
+    hasErrors = true;
+  } else {
+    requirementItems[3].classList.remove('fail');
+    requirementItems[3].classList.add('success');
+  }
+
+  regPasswordInput.addEventListener('blur', function () {
+    requirementsList.style.display = 'none';
+    regPasswordInput.classList.remove('inputAdd');
+    regPasswordInput.style.borderColor = '#B9B9B9';
+  })
+
+  regPasswordInput.addEventListener('click', function () {
+    requirementsList.style.display = 'block';
+  })
+
+  if (hasErrors) {
+    requirementsList.style.display = 'block';
+    regPasswordInput.classList.add('inputAdd');
+    regPasswordInput.style.borderColor = '#ED5454';
+  } else {
+    requirementsList.style.display = 'none';
+    regPasswordInput.classList.remove('inputAdd');
+    regPasswordInput.style.borderColor = '#B9B9B9';
+  }
 }
 
+regPasswordInput.addEventListener('input', validatePassword);
+
 function validateEmail() {
-  regEmailInput.addEventListener('input', function() {
-    if (regEmailInput.value.trim() === "") {
-      emptyEmail.classList.add("fail")
-      emptyEmail.classList.remove("success")
-      emptyEmail.style.display = "block";
-      regEmailInput.classList.add("inputAdd");
-      regEmailInput.style.borderColor = "#ED5454";
-    } else {
-      emailNotValidMsg.style.display = "none";
-      regEmailInput.classList.remove("inputAdd");
-      emptyEmail.style.display = "none";
-      regEmailInput.style.borderColor = "#B9B9B9";
-      emptyEmail.classList.remove("fail")
-    }    
+  if (regEmailInput.value.trim() === "") {
+    emptyEmail.classList.add("fail")
+    emptyEmail.classList.remove("success")
+    emptyEmail.style.display = "block";
+    regEmailInput.classList.add("inputAdd");
+    regEmailInput.style.borderColor = "#ED5454";
+  } else {
+    regEmailInput.classList.remove("inputAdd");
+    emptyEmail.style.display = "none";
+    regEmailInput.style.borderColor = "#B9B9B9";
+    emptyEmail.classList.remove("fail")
+  }
+
+  regEmailInput.addEventListener('blur', function () {
+    emailNotValidMsg.style.display = "none";
+    emptyEmail.style.display = "none";
+    regEmailInput.classList.remove("inputAdd");
+    regEmailInput.style.borderColor = "#B9B9B9";
   })
 }
+
+regEmailInput.addEventListener('input', validateEmail);
 
 function eventListinerToNames() {
   firstNameInput.addEventListener('input', validateNames);
@@ -154,24 +177,37 @@ function validateNames() {
     lastNameInput.style.borderColor = "#B9B9B9";
   }
 
-  if (firstNameInput.value.trim() === "" && lastNameInput.value.trim() === "") {
+  if (firstNameInput.value.trim() === "" || lastNameInput.value.trim() === "") {
     nameEmptyErrorMsg.style.display = "block";
     nameEmptyErrorMsg.classList.add("fail")
   } else {
     nameEmptyErrorMsg.style.display = "none";
   }
-}
 
-function handleInputBlur() {
-  regPasswordInput.classList.remove('inputAdd');
-  regPasswordInput.style.borderColor = '#B9B9B9';
+  firstNameInput.addEventListener('blur', function () {
+    nameErrorMsg.style.display = "none";
+    nameEmptyErrorMsg.style.display = "none";
+    firstNameInput.classList.remove("inputAdd");
+    firstNameInput.style.borderColor = "#B9B9B9";
+    lastNameInput.classList.remove("inputAdd");
+    lastNameInput.style.borderColor = "#B9B9B9";
+
+  })
+
+  lastNameInput.addEventListener('blur', function () {
+    nameErrorMsg.style.display = "none";
+    nameEmptyErrorMsg.style.display = "none";
+    firstNameInput.classList.remove("inputAdd");
+    firstNameInput.style.borderColor = "#B9B9B9";
+    lastNameInput.classList.remove("inputAdd");
+    lastNameInput.style.borderColor = "#B9B9B9";
+  })
 }
 
 firstNameInput.addEventListener('click', eventListinerToNames);
 lastNameInput.addEventListener('click', eventListinerToNames);
 regEmailInput.addEventListener('click', validateEmail);
 regPasswordInput.addEventListener('click', validatePassword);
-regPasswordInput.addEventListener('blur', handleInputBlur);
 
 regEmailInput.addEventListener('input', () => {
   if (regEmailInput.value !== '') {
@@ -188,4 +224,3 @@ regPasswordInput.addEventListener('input', () => {
     inputRegPassword.style.display = 'block';
   }
 });
-

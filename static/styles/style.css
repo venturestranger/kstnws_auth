@@ -163,23 +163,17 @@ body {
 }
 
 .emailErrorMsg {
-    position: absolute;
-    /* display: none; */
+    display: none;
     font-family: 'Mazzard M Medium';
-    color: #ED5454;
     font-size: 12px;
-    top: 62px;
-    left: 7px;
+    margin-left: 16px;
 }
 
 .passwordErrorMsg {
-    position: absolute;
-    /* display: none; */
+    display: none;
     font-family: 'Mazzard M Medium';
-    color: #ED5454;
     font-size: 12px;
-    top: 62px;
-    left: 7px;
+    margin-left: 16px;
 }
 
 .signInBtn {
@@ -211,7 +205,6 @@ body {
     display: flex;
     flex-direction: column;
     width: 328px;
-    margin-top: 40px;
 }
 
 .anotherOptionsCaption {

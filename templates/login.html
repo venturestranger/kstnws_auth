@@ -25,7 +25,9 @@
                 <img src='img/dog.svg' class='inputIconEmail' id="loginEmailIcon"></img>
                 <label class='labelEmail'>E-mail</label>
                 <input class='input' type='email' id="emailInput" name="mail"></input>
-                <span class="emailErrorMsg"></span>
+                <ul class="emailErrorMsg" id="emailErrorMsg">
+                    <li>Заполните поле</li>
+                </ul>
             </div>
             <div class="inputDiv">
                 <img src='img/passwordIcon.svg' class='inputIconPassword' id="loginPasswordIcon"></img>
@@ -33,7 +35,9 @@
                     <%= dict[lang].labelPassword %>
                 </label>
                 <input class='input' type='password' id="passwordInput" name="password"></input>
-                <span class="passwordErrorMsg"></span>
+                <ul class="passwordErrorMsg" id="passwordErrorMsg">
+                    <li>Заполните поле</li>
+                </ul>
             </div>
             <button class='signInBtn' type="submit">
                 <%= dict[lang].signInBtn %>
