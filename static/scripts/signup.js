@@ -15,7 +15,7 @@ const emailNotValidMsg = document.querySelector(".regNotValidEmailErr");
 const anotherOptionsDiv = document.querySelector(".anotherOptions");
 
 const nameRegex = /^[A-ZА-Я][a-zа-я]{0,29}$/;
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const emailRegex = /^[^\s@]{1,64}@[^\s@]{1,255}\.[^\s@]{2,}$/i;
 const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{6,16}$/;
 
 function validateRegisterForm(event) {

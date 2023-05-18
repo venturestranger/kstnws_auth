@@ -24,9 +24,12 @@
             <div class="inputDiv">
                 <img src='img/dog.svg' class='inputIconEmail' id="loginEmailIcon"></img>
                 <label class='labelEmail'>E-mail</label>
-                <input class='input' type='email' id="emailInput" name="mail"></input>
+                <input class='input' type='text' id="emailInput" name="mail"></input>
                 <ul class="emailErrorMsg" id="emailErrorMsg">
                     <li>Заполните поле</li>
+                </ul>
+                <ul class="emailErrorMsg" id="emailNotValidError">
+                    <li>Неверный формат почты</li>
                 </ul>
             </div>
             <div class="inputDiv">
@@ -37,6 +40,9 @@
                 <input class='input' type='password' id="passwordInput" name="password"></input>
                 <ul class="passwordErrorMsg" id="passwordErrorMsg">
                     <li>Заполните поле</li>
+                </ul>
+                <ul class="passwordErrorMsg" id="passwordLongErrorMsg">
+                    <li>Размер поля превышает 50 символов</li>
                 </ul>
             </div>
             <button class='signInBtn' type="submit">
