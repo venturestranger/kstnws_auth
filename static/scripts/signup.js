@@ -11,6 +11,7 @@ const nameEmptyErrorMsg = document.querySelector("#nameEmptyErrorMsg");
 const emptyEmail = document.querySelector(".regEmptyEmailErrorMsg");
 const regPasswordErrorMsg = document.querySelector(".regPasswordErrorMsg");
 const emailNotValidMsg = document.querySelector(".regNotValidEmailErr");
+const nameErrorMsgLi = nameEmptyErrorMsg.querySelector('li');
 
 const anotherOptionsDiv = document.querySelector(".anotherOptions");
 
@@ -161,48 +162,6 @@ function eventListinerToNames() {
   lastNameInput.addEventListener('input', validateNames);
 }
 
-function validateNames() {
-  if (!firstNameInput.value.match(nameRegex) || !lastNameInput.value.match(nameRegex)) {
-    nameErrorMsg.style.display = "block";
-    nameErrorMsg.classList.add("fail")
-    firstNameInput.classList.add("inputAdd");
-    firstNameInput.style.borderColor = "#ED5454";
-    lastNameInput.classList.add("inputAdd");
-    lastNameInput.style.borderColor = "#ED5454";
-  } else {
-    nameErrorMsg.style.display = "none";
-    firstNameInput.classList.remove("inputAdd");
-    firstNameInput.style.borderColor = "#B9B9B9";
-    lastNameInput.classList.remove("inputAdd");
-    lastNameInput.style.borderColor = "#B9B9B9";
-  }
-
-  if (firstNameInput.value.trim() === "" || lastNameInput.value.trim() === "") {
-    nameEmptyErrorMsg.style.display = "block";
-    nameEmptyErrorMsg.classList.add("fail")
-  } else {
-    nameEmptyErrorMsg.style.display = "none";
-  }
-
-  firstNameInput.addEventListener('blur', function () {
-    nameErrorMsg.style.display = "none";
-    nameEmptyErrorMsg.style.display = "none";
-    firstNameInput.classList.remove("inputAdd");
-    firstNameInput.style.borderColor = "#B9B9B9";
-    lastNameInput.classList.remove("inputAdd");
-    lastNameInput.style.borderColor = "#B9B9B9";
-
-  })
-
-  lastNameInput.addEventListener('blur', function () {
-    nameErrorMsg.style.display = "none";
-    nameEmptyErrorMsg.style.display = "none";
-    firstNameInput.classList.remove("inputAdd");
-    firstNameInput.style.borderColor = "#B9B9B9";
-    lastNameInput.classList.remove("inputAdd");
-    lastNameInput.style.borderColor = "#B9B9B9";
-  })
-}
 
 firstNameInput.addEventListener('click', eventListinerToNames);
 lastNameInput.addEventListener('click', eventListinerToNames);

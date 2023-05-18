@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Page</title>
-    <link rel="stylesheet" href="../static/styles/style.css">
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 
 <body>
@@ -34,10 +34,11 @@
                 <input class='surnameInput' type="text" id="surnameInput" name="second_name"></input>
             </div>
             <ul class="nameErrorMsg" id="nameEmptyErrorMsg">
-                <li>Заполните поле Имя, Фамилия</li>
+                <li></li>
             </ul>
             <ul class="nameErrorMsg" id="nameErrorMsg">
-                <li>Латинские или кириллические символы</li>
+                <!-- Латинские или кириллические символы -->
+                <li><%= dict[lang].NameSymbols %></li>
             </ul>
             <div class="inputDiv">
                 <img src='img/dog.svg' class='inputRegIcon' id="emailRegIcon"></img>
@@ -45,10 +46,12 @@
                 <input class='inputReg' type='text' id="registerEmail" name="mail"></input>
             </div>
             <ul class="regEmptyEmailErrorMsg">
-                <li>Заполните поле</li>
+                <!-- Заполните поле -->
+                <li><%= dict[lang].fillEmail %></li>
             </ul>
             <ul class="regNotValidEmailErr">
-                <li>Неверный формат почты</li>
+                <!-- Неверный формат почты -->
+                <li><%= dict[lang].emailNotValid %></li>
             </ul>
             <div class="inputDiv">
                 <img src='img/passwordIcon.svg' class='inputRegIcon' id="passwordRegIcon"></img>
@@ -58,10 +61,14 @@
                 <input class='inputReg' type='password' id="registerPassword" name="password"></input>
             </div>
             <ul class="regPasswordErrorMsg" id="passwordRequirements">
-                <li>От 6 до 16 латинских символов</li>
-                <li>Заглавная буква</li>
-                <li>Минимум одна цифра</li>
-                <li>Без специальных символов</li>
+                <!-- От 6 до 16 латинских символов -->
+                <li><%= dict[lang].passwordSymbols %></li>
+                <!-- Заглавная буква -->
+                <li><%= dict[lang].passwordCapital %></li>
+                <!-- Минимум одна цифра -->
+                <li><%= dict[lang].passwordMinNum %></li>
+                <!-- Без специальных символов -->
+                <li><%= dict[lang].passwordSpecialSymbols %></li>
             </ul>
             <button class='signInBtn'>
                 <%= dict[lang].signInBtn %>
@@ -83,7 +90,64 @@
                 </a>
         </span>
     </div>
-    <script src="../static/scripts/signup.js"></script>
+    <script>
+
+        function validateNames() {
+            if (!firstNameInput.value.match(nameRegex) || !lastNameInput.value.match(nameRegex)) {
+                nameErrorMsg.style.display = "block";
+                nameErrorMsg.classList.add("fail")
+                firstNameInput.classList.add("inputAdd");
+                firstNameInput.style.borderColor = "#ED5454";
+                lastNameInput.classList.add("inputAdd");
+                lastNameInput.style.borderColor = "#ED5454";
+            } else {
+                nameErrorMsg.style.display = "none";
+                firstNameInput.classList.remove("inputAdd");
+                firstNameInput.style.borderColor = "#B9B9B9";
+                lastNameInput.classList.remove("inputAdd");
+                lastNameInput.style.borderColor = "#B9B9B9";
+            }
+
+            if (firstNameInput.value.trim() === "" && lastNameInput.value.trim() === "") {
+                nameEmptyErrorMsg.style.display = "block";
+                // Заполните поля Имя, Фамилия
+                nameErrorMsgLi.textContent = '<%= dict[lang].fillNameAndLastName %>';
+                nameEmptyErrorMsg.classList.add("fail")
+            } else if (firstNameInput.value.trim() === "") {
+                nameEmptyErrorMsg.style.display = "block";
+                // Заполните поле имя
+                nameErrorMsgLi.textContent = '<%= dict[lang].fillName %>';
+                nameEmptyErrorMsg.classList.add("fail")
+            } else if (lastNameInput.value.trim() === "") {
+                nameEmptyErrorMsg.style.display = "block";
+                // Заполните поле Фамилия
+                nameErrorMsgLi.textContent = '<%= dict[lang].fillLastName %>';
+                nameEmptyErrorMsg.classList.add("fail")
+            } else {
+                nameEmptyErrorMsg.style.display = "none";
+            }
+
+            firstNameInput.addEventListener('blur', function () {
+                nameErrorMsg.style.display = "none";
+                nameEmptyErrorMsg.style.display = "none";
+                firstNameInput.classList.remove("inputAdd");
+                firstNameInput.style.borderColor = "#B9B9B9";
+                lastNameInput.classList.remove("inputAdd");
+                lastNameInput.style.borderColor = "#B9B9B9";
+
+            })
+
+            lastNameInput.addEventListener('blur', function () {
+                nameErrorMsg.style.display = "none";
+                nameEmptyErrorMsg.style.display = "none";
+                firstNameInput.classList.remove("inputAdd");
+                firstNameInput.style.borderColor = "#B9B9B9";
+                lastNameInput.classList.remove("inputAdd");
+                lastNameInput.style.borderColor = "#B9B9B9";
+            })
+        }
+    </script>
+    <script src="scripts/signup.js"></script>
 </body>
 
 </html>
