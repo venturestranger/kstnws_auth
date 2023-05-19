@@ -57,6 +57,26 @@ body {
     height: 100vh;
 }
 
+.forgotEmail {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Mazzard M Medium';
+    height: 90vh;
+}
+
+.forgotPassword {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Mazzard M Medium';
+    height: 90vh;
+}
+
 .logoContainer {
     background-image: url(../img/border.svg);
     width: 80px;
@@ -91,18 +111,10 @@ body {
     flex-direction: column;
     position: relative;
     margin-top: 25px;
-    width: 328px;
+    max-width: 328px;
 }
 
-.inputIconEmail {
-    position: absolute;
-    top: 27px;
-    left: 300px;
-    width: 19px;
-    height: 24px;
-}
-
-.inputIconPassword {
+.inputIcon {
     position: absolute;
     top: 27px;
     left: 300px;
@@ -472,3 +484,71 @@ body {
     color: #547FED;
     text-decoration: none;
 }
+
+
+@media (max-width: 345px) {
+    .greeting {
+        font-size: 20px;
+    }
+    
+    .greet {
+        font-size: 16px;
+    }
+
+    .input {
+        width: 250px;
+    }
+
+    .inputIcon {
+        left: 240px;
+    }
+
+    .inputReg {
+        width: 250px;
+    }
+
+    .signInBtn {
+        width: 270px;
+    }
+
+    .signForm {
+        width: 270px;
+    }
+
+    .nameInput {
+        width: 90px;
+    }
+
+    .surnameLabel {
+        left: 135px;
+        bottom: -7px;
+    }
+
+    .surnameInput {
+        left: 120px;
+        width: 130px;
+    }
+
+    .inputRegIcon {
+        left: 240px;
+    }
+
+    .anotherOptions {
+        width: 270px;
+    }
+
+    .signInWithBtn {
+        width: 270px;
+    }
+    
+    .signInWithIcon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .signInWithCaption {
+        position: relative;
+        top: 12px;
+        left: 5px;
+    }
+  }

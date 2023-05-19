@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="../static/styles/style.css">
 </head>
 
 <body>
@@ -22,7 +22,7 @@
         </p>
         <form action="/auth/login" method="post" id="loginForm" class='signForm'>
             <div class="inputDiv">
-                <img src='img/dog.svg' class='inputIconEmail' id="loginEmailIcon"></img>
+                <img src='img/dog.svg' class='inputIcon' id="loginEmailIcon"></img>
                 <label class='labelEmail'>E-mail</label>
                 <input class='input' type='text' id="emailInput" name="mail"></input>
                 <ul class="emailErrorMsg" id="emailErrorMsg">
@@ -35,7 +35,7 @@
                 </ul>
             </div>
             <div class="inputDiv">
-                <img src='img/passwordIcon.svg' class='inputIconPassword' id="loginPasswordIcon"></img>
+                <img src='img/passwordIcon.svg' class='inputIcon' id="loginPasswordIcon"></img>
                 <label class='labelPassword'>
                     <%= dict[lang].labelPassword %>
                 </label>
@@ -64,7 +64,7 @@
         <p class='noAccountCaption'><%= dict[lang].noAccountCaption %></p>
         <a href="/auth/signup" class='noAccountBtn'><%= dict[lang].noAccountBtn %></a>
     </div>
-    <script src="scripts/login.js"></script>
+    <script src="../static/scripts/login.js"></script>
 </body>
 
 </html>

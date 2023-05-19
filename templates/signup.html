@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Page</title>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="../static/styles/style.css">
 </head>
 
 <body>
@@ -38,7 +38,11 @@
             </ul>
             <ul class="nameErrorMsg" id="nameErrorMsg">
                 <!-- Латинские или кириллические символы -->
-                <li><%= dict[lang].NameSymbols %></li>
+                <li><%= dict[lang].nameSymbols %></li>
+            </ul>
+            <ul class="nameErrorMsg" id="nameCapitalMsg"> 
+                <!-- Заглавная буква -->
+                <li><%= dict[lang].capitalLetter %></li>
             </ul>
             <div class="inputDiv">
                 <img src='img/dog.svg' class='inputRegIcon' id="emailRegIcon"></img>
@@ -91,17 +95,36 @@
         </span>
     </div>
     <script>
-
+        
         function validateNames() {
+            const capitalRegex = /^[A-ZА-Я]/;
+            if (!firstNameInput.value.match(capitalRegex) || !lastNameInput.value.match(capitalRegex)) {
+                nameCapitalMsg.style.display = "block";
+                nameCapitalMsg.classList.remove("success");
+                nameCapitalMsg.classList.add("fail")
+                firstNameInput.classList.add("inputAdd");
+                firstNameInput.style.borderColor = "#ED5454";
+                lastNameInput.classList.add("inputAdd");
+                lastNameInput.style.borderColor = "#ED5454";
+            } else {
+                nameCapitalMsg.classList.remove("fail");
+                nameCapitalMsg.classList.add("success");
+                firstNameInput.classList.remove("inputAdd");
+                firstNameInput.style.borderColor = "#B9B9B9";
+                lastNameInput.classList.remove("inputAdd");
+                lastNameInput.style.borderColor = "#B9B9B9";
+            }
             if (!firstNameInput.value.match(nameRegex) || !lastNameInput.value.match(nameRegex)) {
                 nameErrorMsg.style.display = "block";
+                nameErrorMsg.classList.remove("success");
                 nameErrorMsg.classList.add("fail")
                 firstNameInput.classList.add("inputAdd");
                 firstNameInput.style.borderColor = "#ED5454";
                 lastNameInput.classList.add("inputAdd");
                 lastNameInput.style.borderColor = "#ED5454";
             } else {
-                nameErrorMsg.style.display = "none";
+                nameErrorMsg.classList.remove("fail");
+                nameErrorMsg.classList.add("success");
                 firstNameInput.classList.remove("inputAdd");
                 firstNameInput.style.borderColor = "#B9B9B9";
                 lastNameInput.classList.remove("inputAdd");
@@ -126,28 +149,22 @@
             } else {
                 nameEmptyErrorMsg.style.display = "none";
             }
-
-            firstNameInput.addEventListener('blur', function () {
+            
+            function blur() {
                 nameErrorMsg.style.display = "none";
                 nameEmptyErrorMsg.style.display = "none";
+                nameCapitalMsg.style.display = "none";
                 firstNameInput.classList.remove("inputAdd");
                 firstNameInput.style.borderColor = "#B9B9B9";
                 lastNameInput.classList.remove("inputAdd");
                 lastNameInput.style.borderColor = "#B9B9B9";
+            }
 
-            })
-
-            lastNameInput.addEventListener('blur', function () {
-                nameErrorMsg.style.display = "none";
-                nameEmptyErrorMsg.style.display = "none";
-                firstNameInput.classList.remove("inputAdd");
-                firstNameInput.style.borderColor = "#B9B9B9";
-                lastNameInput.classList.remove("inputAdd");
-                lastNameInput.style.borderColor = "#B9B9B9";
-            })
+            firstNameInput.addEventListener('blur', blur)
+            lastNameInput.addEventListener('blur', blur)
         }
     </script>
-    <script src="scripts/signup.js"></script>
+    <script src="../static/scripts/signup.js"></script>
 </body>
 
 </html>

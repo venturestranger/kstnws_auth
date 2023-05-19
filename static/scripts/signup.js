@@ -12,10 +12,9 @@ const emptyEmail = document.querySelector(".regEmptyEmailErrorMsg");
 const regPasswordErrorMsg = document.querySelector(".regPasswordErrorMsg");
 const emailNotValidMsg = document.querySelector(".regNotValidEmailErr");
 const nameErrorMsgLi = nameEmptyErrorMsg.querySelector('li');
+const nameCapitalMsg = document.querySelector("#nameCapitalMsg");
 
-const anotherOptionsDiv = document.querySelector(".anotherOptions");
-
-const nameRegex = /^[A-ZА-Я][a-zа-я]{0,29}$/;
+const nameRegex = /^([A-Z][a-z]{0,29}|[А-Я][а-яё]{0,29}|[A-Za-z]+)$/;
 const emailRegex = /^[^\s@]{1,64}@[^\s@]{1,255}\.[^\s@]{2,}$/i;
 const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{6,16}$/;
 
@@ -66,48 +65,47 @@ function validateRegisterForm(event) {
   }
 }
 
-form.addEventListener('submit', validateRegisterForm);
-
 function validatePassword() {
   const requirementsList = document.getElementById('passwordRequirements');
   const requirementItems = requirementsList.getElementsByTagName('li');
   let hasErrors = false;
 
-  // Проверка каждого требования пароля
-  if (!/(?=.*\d)/.test(this.value)) {
-    requirementItems[2].classList.remove('success');
-    requirementItems[2].classList.add('fail');
-    hasErrors = true;
-  } else {
-    requirementItems[2].classList.remove('fail');
-    requirementItems[2].classList.add('success');
+  function fail(ul) {
+    ul.classList.remove('success');
+    ul.classList.add('fail');
   }
 
-  if (!/(?=.*[A-Z])/.test(this.value)) {
-    requirementItems[1].classList.remove('success');
-    requirementItems[1].classList.add('fail');
-    hasErrors = true;
-  } else {
-    requirementItems[1].classList.remove('fail');
-    requirementItems[1].classList.add('success');
+  function success(ul) {
+    ul.classList.remove('fail');
+    ul.classList.add('success');
   }
 
-  if (!/^[a-zA-Z0-9]{6,16}$/.test(this.value)) {
-    requirementItems[0].classList.remove('success');
-    requirementItems[0].classList.add('fail');
+  if (!/(?=.*\d)/.test(regPasswordInput.value)) {
+    fail(requirementItems[2]);
     hasErrors = true;
   } else {
-    requirementItems[0].classList.remove('fail');
-    requirementItems[0].classList.add('success');
+    success(requirementItems[2]);
   }
 
-  if (!/^[a-zA-Z0-9]+$/.test(this.value)) {
-    requirementItems[3].classList.remove('success');
-    requirementItems[3].classList.add('fail');
+  if (!/(?=.*[A-Z])/.test(regPasswordInput.value)) {
+    fail(requirementItems[1]);
     hasErrors = true;
   } else {
-    requirementItems[3].classList.remove('fail');
-    requirementItems[3].classList.add('success');
+    success(requirementItems[1]);
+  }
+
+  if (!/^[a-zA-Z0-9]{6,16}$/.test(regPasswordInput.value)) {
+    fail(requirementItems[0]);
+    hasErrors = true;
+  } else {
+    success(requirementItems[0]);
+  }
+
+  if (!/^[a-zA-Z0-9]+$/.test(regPasswordInput.value)) {
+    fail(requirementItems[3]);
+    hasErrors = true;
+  } else {
+    success(requirementItems[3]);
   }
 
   regPasswordInput.addEventListener('blur', function () {
@@ -131,8 +129,6 @@ function validatePassword() {
   }
 }
 
-regPasswordInput.addEventListener('input', validatePassword);
-
 function validateEmail() {
   if (regEmailInput.value.trim() === "") {
     emptyEmail.classList.add("fail")
@@ -155,14 +151,16 @@ function validateEmail() {
   })
 }
 
-regEmailInput.addEventListener('input', validateEmail);
+
 
 function eventListinerToNames() {
   firstNameInput.addEventListener('input', validateNames);
   lastNameInput.addEventListener('input', validateNames);
 }
 
-
+form.addEventListener('submit', validateRegisterForm);
+regEmailInput.addEventListener('input', validateEmail);
+regPasswordInput.addEventListener('input', validatePassword);
 firstNameInput.addEventListener('click', eventListinerToNames);
 lastNameInput.addEventListener('click', eventListinerToNames);
 regEmailInput.addEventListener('click', validateEmail);
