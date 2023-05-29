@@ -54,7 +54,7 @@ function stringifyParams(params) {
 				let user = resp.data[0]
 				if (user.password.startsWith(service)) {
 					res.cookie("id", user.id, {signed: true})
-					res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: ["200"]})
+					res.redirect("/")
 				} else
 					res.redirect("/auth/login")
 			} else 
