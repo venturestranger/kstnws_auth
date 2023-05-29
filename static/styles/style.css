@@ -57,6 +57,26 @@ body {
     height: 100vh;
 }
 
+.forgotEmail {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Mazzard M Medium';
+    height: 90vh;
+}
+
+.forgotPassword {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Mazzard M Medium';
+    height: 90vh;
+}
+
 .logoContainer {
     background-image: url(../img/border.svg);
     width: 80px;
@@ -91,19 +111,10 @@ body {
     flex-direction: column;
     position: relative;
     margin-top: 25px;
-    width: 328px;
-    height: 200px;
+    max-width: 328px;
 }
 
-.inputIconEmail {
-    position: absolute;
-    top: 27px;
-    left: 300px;
-    width: 19px;
-    height: 24px;
-}
-
-.inputIconPassword {
+.inputIcon {
     position: absolute;
     top: 27px;
     left: 300px;
@@ -163,23 +174,17 @@ body {
 }
 
 .emailErrorMsg {
-    position: absolute;
-    /* display: none; */
+    display: none;
     font-family: 'Mazzard M Medium';
-    color: #ED5454;
     font-size: 12px;
-    top: 62px;
-    left: 7px;
+    margin-left: 16px;
 }
 
 .passwordErrorMsg {
-    position: absolute;
-    /* display: none; */
+    display: none;
     font-family: 'Mazzard M Medium';
-    color: #ED5454;
     font-size: 12px;
-    top: 62px;
-    left: 7px;
+    margin-left: 16px;
 }
 
 .signInBtn {
@@ -291,10 +296,10 @@ body {
 }
 
 .nameErrorMsg {
+    display: none;
     font-family: 'Mazzard M Medium';
-    color: #ED5454;
     font-size: 12px;
-    margin-left: 10px;
+    margin-left: 16px;
 }
 
 .nameInputDiv {
@@ -339,11 +344,18 @@ body {
     color: #707070;
 }
 
-.regEmailErrorMsg {
+.regEmptyEmailErrorMsg {
+    display: none;
     font-family: 'Mazzard M Medium';
-    color: #ED5454;
     font-size: 12px;
-    margin-left: 10px;
+    margin-left: 16px;
+}
+
+.regNotValidEmailErr {
+    display: none;
+    font-family: 'Mazzard M Medium';
+    font-size: 12px;
+    margin-left: 18px;
 }
 
 .regLabelPassword {
@@ -475,3 +487,71 @@ body {
 a {
     text-decoration: none;
 }
+
+
+@media (max-width: 345px) {
+    .greeting {
+        font-size: 20px;
+    }
+    
+    .greet {
+        font-size: 16px;
+    }
+
+    .input {
+        width: 250px;
+    }
+
+    .inputIcon {
+        left: 240px;
+    }
+
+    .inputReg {
+        width: 250px;
+    }
+
+    .signInBtn {
+        width: 270px;
+    }
+
+    .signForm {
+        width: 270px;
+    }
+
+    .nameInput {
+        width: 90px;
+    }
+
+    .surnameLabel {
+        left: 135px;
+        bottom: -7px;
+    }
+
+    .surnameInput {
+        left: 120px;
+        width: 130px;
+    }
+
+    .inputRegIcon {
+        left: 240px;
+    }
+
+    .anotherOptions {
+        width: 270px;
+    }
+
+    .signInWithBtn {
+        width: 270px;
+    }
+    
+    .signInWithIcon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .signInWithCaption {
+        position: relative;
+        top: 12px;
+        left: 5px;
+    }
+  }

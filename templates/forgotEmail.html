@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Forgot Email</title>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/navbar.css">
 </head>
 
 <body>
-    <div class='profile'>
+    <div class='forgotEmail'>
         <div class='logoContainer'>
             <img src='img/logo.png' class='logo'></img>
         </div>
@@ -21,7 +21,7 @@
         <p class='greet'>
             <%= dict[lang].greet %>
         </p>
-        <form action="/auth/login" method="post" id="loginForm" class='signForm'>
+        <form action="/auth/forget" method="post" id="loginForm" class='signForm'>
             <div class="inputDiv">
                 <img src='img/dog.svg' class='inputIcon' id="loginEmailIcon"></img>
                 <label class='labelEmail'>E-mail</label>
@@ -35,35 +35,10 @@
                     <li><%= dict[lang].emailNotValid %></li>
                 </ul>
             </div>
-            <div class="inputDiv">
-                <img src='img/passwordIcon.svg' class='inputIcon' id="loginPasswordIcon"></img>
-                <label class='labelPassword'>
-                    <%= dict[lang].labelPassword %>
-                </label>
-                <input class='input' type='password' id="passwordInput" name="password"></input>
-                <ul class="passwordErrorMsg" id="passwordErrorMsg">
-                    <!-- Заполните поле -->
-                    <li><%= dict[lang].fillField %></li>
-                </ul>
-                <ul class="passwordErrorMsg" id="passwordLongErrorMsg">
-                    <!-- Размер поля превышает 50 символов -->
-                    <li><%= dict[lang].passwordMaxSymbols %></li>
-                </ul>
-            </div>
             <button class='signInBtn' type="submit">
                 <%= dict[lang].signInBtn %>
             </button>
         </form>
-        <a href="/" class='forgotPasswordBtn'>
-            <%= dict[lang].forgotPasswordBtn %>
-        </a>
-        <div class='anotherOptions'>
-            <p class='anotherOptionsCaption'><%= dict[lang].anotherOptionsCaption %></p>
-            <a class='signInWithBtn' href='/auth/google'> <img src='img/googleIcon.svg' class='signInWithIcon'></img> <span
-                    class='signInWithCaption'><%= dict[lang].signWithGoogle %></span></a>
-        </div>
-        <p class='noAccountCaption'><%= dict[lang].noAccountCaption %></p>
-        <a href="/auth/signup" class='noAccountBtn'><%= dict[lang].noAccountBtn %></a>
     </div>
     <footer>
         <nav>
@@ -87,7 +62,7 @@
             </div>
         </nav>
     </footer>
-    <script src="scripts/login.js"></script>
+    <script src="scripts/forgotEmail.js"></script>
 </body>
 
 </html>

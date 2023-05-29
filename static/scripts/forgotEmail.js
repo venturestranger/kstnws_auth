@@ -1,20 +1,15 @@
 const form = document.getElementById('loginForm');
 const emailInput = document.querySelector("#emailInput");
-const passwordInput = document.querySelector("#passwordInput");
 const emailLabel = document.getElementById("loginEmailLabel");
 const loginEmailIcon = document.getElementById("loginEmailIcon");
-const loginPasswordIcon = document.getElementById("loginPasswordIcon");
 const emailErrorMsg = document.querySelector("#emailErrorMsg");
-const passwordErrorMsg = document.querySelector("#passwordErrorMsg");
-const passwordLongErrorMsg = document.querySelector("#passwordLongErrorMsg");
 const emailNotValidErr = document.querySelector("#emailNotValidError");
 
 const emailRegex = /^[^\s@]{1,64}@[^\s@]{1,255}\.[^\s@]{2,}$/i;
 
-function validateLoginForm(event) {
+function validateForgotEmailForm(event) {
     event.preventDefault();
     const email = emailInput.value.trim();
-    const password = passwordInput.value;
 
 
     let isValid = true;
@@ -32,16 +27,7 @@ function validateLoginForm(event) {
         emailInput.style.borderColor = "#B9B9B9";
     }
 
-    if (password.length > 50) {
-        validatePassword();
-        isValid = false;
-    } else if (password.length < 1) {
-        validatePassword();
-        isValid = false;
-    }
-
     emailInput.addEventListener('click', validateEmail);
-    passwordInput.addEventListener('click', validatePassword);
 
     if (isValid) {
         form.submit();
@@ -76,37 +62,13 @@ function validateEmail() {
     blur(emailInput, emailErrorMsg, emailNotValidErr);
 }
 
-function validatePassword() {
-    if (passwordInput.value.length > 50) {
-        fail(passwordLongErrorMsg, passwordInput);
-    } else if (passwordInput.value.length < 1) {
-        fail(passwordErrorMsg, passwordInput);
-    } else {
-        passwordLongErrorMsg.style.display = 'none';
-        passwordErrorMsg.style.display = 'none';
-        passwordInput.classList.remove("inputAdd");
-        passwordInput.style.borderColor = "#B9B9B9";
-    }
-
-    blur(passwordInput, passwordLongErrorMsg, passwordErrorMsg);
-}
-
 emailInput.addEventListener('input', validateEmail);
-passwordInput.addEventListener('input', validatePassword);
-form.addEventListener('submit', validateLoginForm);
+form.addEventListener('submit', validateForgotEmailForm);
 
 emailInput.addEventListener('input', () => {
     if (emailInput.value !== '') {
         loginEmailIcon.style.display = 'none';
     } else {
         loginEmailIcon.style.display = 'block';
-    }
-});
-
-passwordInput.addEventListener('input', () => {
-    if (passwordInput.value !== '') {
-        loginPasswordIcon.style.display = 'none';
-    } else {
-        loginPasswordIcon.style.display = 'block';
     }
 });
