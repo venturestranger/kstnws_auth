@@ -93,8 +93,8 @@ function stringifyParams(params) {
 /*const mailer = nodemailer.createTransport({
 	service: "gmail",
 	auth: {
-		user: MAIL,
-		pass: PASSWORD
+		user: env.MAIL_LOGIN,
+		pass: env.MAIL_PASSWORD
 	}
 })
 
@@ -108,13 +108,16 @@ function Mail(_from, _to, _subject, _text) {
 	}
 }
 
-function wrapToken(token) {
-	return VERIFICATION_TEXT + token
+function sendVerifyLetter(to, token) {
+	let mail = new Mail(env.VERIFICATION_FROM, to, env.VERIFICATION_SUBJECT, env.VERIFICATION_TEXT + token)
+	mail.send()
+	console.log(`Mail: VERIFICATION to ${to}`)
 }
 
-function sendVerification(to, token) {
-	let mail = new Mail(VERIFICATION_FROM, to, VERIFICATION_SUBJECT, wrapToken(token))
-	console.log(`Mail: VERIFICATION to ${to}`)
+function sendResetLetter(to, token) {
+	let mail = new Mail(env.RESET_FROM, to, env.RESET_TEXT + token)
+	mail.send()
+	console.log(`Mail: RESET to ${to}`)
 }
 
 module.exports = {

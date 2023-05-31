@@ -48,8 +48,15 @@ const registerLoginAttempt = function(req, res, next) {
 const verifyPage = function(req, res, mail) {
 	res.cookie("mail", mail, {signed: true, maxAge: 3600000})
 	let token = jwt.sign({mail: mail}, env.SECRET_KEY, {expiresIn: "1h"})
-	// utils.sendVerification(mail, token)
-	res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: [`token-sent`, token]})
+	// utils.sendVerifyLetter(mail, token)
+	res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: [`verify-link-sent`, token]})
+}
+
+const restorePage = function(req, res, mail) {
+	res.cookie("mail", mail, {signed: true, maxAge: 3600000})
+	let token = jwt.sign({mail: mail}, env.SECRET_KEY, {expiresIn: "1h"})
+	// utils.sendResetLetter(mail, token)
+	res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: [`restore-link-sent`, token]})
 }
 
 app.get("/", (req, res)=>{
@@ -112,7 +119,6 @@ app.get("/verify/:link", (req, res) => {
 
 app.route("/login")
 	.get(utils.isNotAuth, (req, res) => {
-		console.log(req.cookies.lang)
 		res.render("login", {lang: req.cookies.lang, dict: dict, msgs: ["200"]})
 	})
 	.post(utils.isNotAuth, registerLoginAttempt, async (req, res) => {
@@ -126,7 +132,7 @@ app.route("/login")
 			.then(resp => {
 				if (resp.data) {
 					let user = resp.data[0]
-					if (user.password.startsWith("google")) 
+					if (user.password.startsWith("google:")) 
 						res.redirect(`/auth/google`)
 					else if (user.is_verified == false)
 						verifyPage(req, res, mail)
@@ -207,4 +213,91 @@ app.route("/signup")
 			})
 	})
 
+
+app.route("/restore")
+	.get(utils.isNotAuth, (req, res) => {
+		res.render("forgotEmail", {lang: req.cookies.lang, dict: dict, msgs: ["200"]})
+	})
+	.post(utils.isNotAuth, async (req, res) => {
+		let mail = req.body.mail
+		await axios.get(env.URL_API + `/rest/users?mail=${mail}`, {
+			headers: {
+				"Authorization": "Bearer " + env.TOKEN_API
+			}
+		})
+			.then(resp => {
+				if (resp.data) {
+					let user = resp.data[0]
+					if (user.password.startsWith("google:")) 
+						res.redirect(`/auth/google`)
+					else if (user.is_verified == false)
+						verifyPage(req, res, mail)
+					else 
+						restorePage(req, res, mail)
+				} else 
+					res.render("status", {stts: env.BAD, lang: req.cookies.lang, dict: dict, msgs: ["401"]})
+			})
+			.catch(err => {
+				res.render("status", {stts: env.BAD, lang: req.cookies.lang, dict: dict, msgs: ["500"]})
+			})
+
+	})
+
+app.route("/restore/:link")
+	.get(utils.isNotAuth, (req, res) => {
+		jwt.verify(req.params.link, env.SECRET_KEY, async (err, payload) => {
+			if (err) 
+				res.render("status", {stts: env.BAD, lang: req.cookies.lang, dict: dict, msgs: ["500"]})
+			else {
+				let mail = req.signedCookies.mail
+				res.render("forgotPassword", {lang: req.cookies.lang, dict: dict, msgs: ["200"]})
+			}
+		})
+	})
+	.post(utils.isNotAuth, async (req, res) => {
+		let password = req.body.password
+		let mail = req.signedCookies.mail
+		await axios.get(env.URL_API + `/rest/users?mail=${mail}`, {
+				headers: {
+					"Authorization": "Bearer " + env.TOKEN_API
+				}
+			})
+				.then(async resp => {
+					if (resp.data) {
+						let user = resp.data[0]
+						await axios.put(env.URL_API + `/rest/users?mail=${mail}`, {
+							is_verified: user.verified,
+							password: user.password,
+							name: user.name,
+							second_name: user.second_name,
+							picture_url: user.profile_url,
+							mail: user.mail,
+							contact_mail: user.contact_mail,
+							phone: user.phone,
+							contact_phone: user.contact_phone,
+							country: user.country,
+							region: user.region,
+							city: user.city,
+							bio: user.bio,
+							birth_date: user.birth_date
+						}, { 
+							headers: {
+								"Authorization": "Bearer " + env.TOKEN_API
+							}
+						})
+							.then(resp => {
+								res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: ["200"]})
+							})
+							.catch(err => {
+								res.render("status", {stts: env.BAD, lang: req.cookies.lang, dict: dict, msgs: ["500"]})
+							})
+					} else 
+						res.render("status", {stts: env.BAD, lang: req.cookies.lang, dict: dict, msgs: ["401"]})
+				})
+				.catch(err => {
+					res.render("status", {stts: env.BAD, lang: req.cookies.lang, dict: dict, msgs: ["500"]})
+				})
+	})
+
 module.exports = app
+

@@ -21,17 +21,15 @@
         <p class='greet'>
             <%= dict[lang].greet %>
         </p>
-        <form action="/auth/forget" method="post" id="loginForm" class='signForm'>
+        <form action="/auth/restore" method="post" id="loginForm" class='signForm'>
             <div class="inputDiv">
                 <img src='img/dog.svg' class='inputIcon' id="loginEmailIcon"></img>
                 <label class='labelEmail'>E-mail</label>
                 <input class='input' type='text' id="emailInput" name="mail"></input>
                 <ul class="emailErrorMsg" id="emailErrorMsg">
-                    <!-- Заполните поле -->
                     <li><%= dict[lang].fillField %></li>
                 </ul>
                 <ul class="emailErrorMsg" id="emailNotValidError">
-                    <!-- Неверный формат почты -->
                     <li><%= dict[lang].emailNotValid %></li>
                 </ul>
             </div>
