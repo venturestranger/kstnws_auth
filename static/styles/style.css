@@ -54,7 +54,7 @@ body {
     align-items: center;
     justify-content: center;
     font-family: 'Mazzard M Medium';
-    height: 100vh;
+    height: 90vh;
 }
 
 .forgotEmail {
@@ -84,6 +84,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .logo {
@@ -272,7 +274,7 @@ body {
     align-items: center;
     justify-content: center;
     font-family: 'Mazzard M Medium';
-    height: 100vh;
+    height: 90vh;
 }
 
 .nameLabel {
@@ -430,7 +432,7 @@ body {
     align-items: center;
     justify-content: center;
     font-family: 'Mazzard M Medium';
-    height: 100vh;
+    height: 90vh;
 }
 
 .statusWindow {
@@ -487,7 +489,6 @@ body {
 a {
     text-decoration: none;
 }
-
 
 @media (max-width: 345px) {
     .greeting {

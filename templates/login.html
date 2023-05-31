@@ -27,11 +27,9 @@
                 <label class='labelEmail'>E-mail</label>
                 <input class='input' type='text' id="emailInput" name="mail"></input>
                 <ul class="emailErrorMsg" id="emailErrorMsg">
-                    <!-- Заполните поле -->
                     <li><%= dict[lang].fillField %></li>
                 </ul>
                 <ul class="emailErrorMsg" id="emailNotValidError">
-                    <!-- Неверный формат почты -->
                     <li><%= dict[lang].emailNotValid %></li>
                 </ul>
             </div>
@@ -42,11 +40,9 @@
                 </label>
                 <input class='input' type='password' id="passwordInput" name="password"></input>
                 <ul class="passwordErrorMsg" id="passwordErrorMsg">
-                    <!-- Заполните поле -->
                     <li><%= dict[lang].fillField %></li>
                 </ul>
                 <ul class="passwordErrorMsg" id="passwordLongErrorMsg">
-                    <!-- Размер поля превышает 50 символов -->
                     <li><%= dict[lang].passwordMaxSymbols %></li>
                 </ul>
             </div>
@@ -70,19 +66,19 @@
             <div class="navbar">
                 <a href="#" class="navbar-item">
                     <img src="img/main.svg" alt="main">
-                    <p>Главная</p>
+                    <p><%= dict[lang].mainPage %></p>
                 </a>
                 <a href="#" class="navbar-item">
                     <img src="img/createPost.svg" alt="createPost">
-                    <p>Создать пост</p>
+                    <p><%= dict[lang].createPostPage %></p>
                 </a>
                 <a href="#" class="navbar-item">
                     <img src="img/favorites.svg" alt="favorites">
-                    <p>Избранное</p>
+                    <p><%= dict[lang].favoritesPage %></p>
                 </a>
                 <a href="#" class="navbar-item">
                     <img src="img/profileImg.svg" alt="profile">
-                    <p>Профиль</p>
+                    <p><%= dict[lang].profilePage %></p>
                 </a>
             </div>
         </nav>

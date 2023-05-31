@@ -36,6 +36,14 @@ const dict = {
 		"passwordCapital": "Заглавная буква",
 		"passwordMinNum": "Минимум одна цифра",
 		"passwordSpecialSymbols": "Без специальных символов"
+		"mainPage": "Главная",
+		"createPostPage": "Создать пост",
+		"favoritesPage": "Избранное",
+		"profilePage": "Профиль",
+		"fillNameAndLastName": "Заполните поля Имя, Фамилия",
+		"fillName": "Заполните поле имя",
+		"fillLastName": "Заполните поле Фамилия",
+		"backToMain": "Вернуться на главную"
 	},
 	"ru": {
 		"200": "Действие выполнено успешно.",

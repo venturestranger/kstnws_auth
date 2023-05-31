@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Status Page</title>
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/navbar.css">  
 </head>
 
 <body>
@@ -26,9 +27,31 @@
             <% } %>
         </div>
         <div class="buttonDiv">
-            <a href="/">Вернуться на главную</a>
+            <a><%= dict[lang].backToMain %></a>
         </div>
     </div>
+    <footer>
+        <nav>
+            <div class="navbar">
+                <a href="#" class="navbar-item">
+                    <img src="img/main.svg" alt="main">
+                    <p><%= dict[lang].mainPage %></p>
+                </a>
+                <a href="#" class="navbar-item">
+                    <img src="img/createPost.svg" alt="createPost">
+                    <p><%= dict[lang].createPostPage %></p>
+                </a>
+                <a href="#" class="navbar-item">
+                    <img src="img/favorites.svg" alt="favorites">
+                    <p><%= dict[lang].favoritesPage %></p>
+                </a>
+                <a href="#" class="navbar-item">
+                    <img src="img/profileImg.svg" alt="profile">
+                    <p><%= dict[lang].profilePage %></p>
+                </a>
+            </div>
+        </nav>
+    </footer>
 </body>
 
 </html>
