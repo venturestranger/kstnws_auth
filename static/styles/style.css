@@ -487,6 +487,93 @@ body {
     text-decoration: none;
 }
 
+@media (max-height: 750px) {
+    .greeting {
+        padding-top: 5px;
+        font-weight: 500;
+    }
+    
+    .greet {
+        color: #8C8C8C;
+        padding-top: 4px;
+    }
+    
+    .secondGreet {
+        color: #8C8C8C;
+        padding-top: 4px;
+    }
+}
+
+@media (max-height: 700px) {
+    .input {
+        margin-top: 10px;
+        margin-bottom: 7px;
+    }
+
+    .profile {
+        height: 90vh;
+    }
+
+    .greeting {
+        padding-top: 5px;
+        font-weight: 500;
+    }
+    
+    .greet {
+        color: #8C8C8C;
+        padding-top: 4px;
+    }
+    
+    .secondGreet {
+        color: #8C8C8C;
+        padding-top: 4px;
+    }
+
+    .signForm {
+        margin-top: 10px;
+    }
+
+    .labelEmail {
+        top: 4px;
+    }
+    
+    .labelPassword {
+        top: 4px;
+    }
+
+    .inputIcon {
+        top: 17px;
+    }
+
+    .input {
+        height: 35px;
+    }
+
+    .signInBtn {
+        height: 35px;
+    }
+
+    .signInWithBtn {
+        height: 35px;
+    }
+
+    .signInWithIcon {
+        margin-top: 6px;
+    }
+
+    .signInWithCaption {
+        top: 9px;
+    }
+
+    .anotherOptionsCaption {
+        margin: 5px 0px 0px 0px;
+    }
+
+    .haveAccountCaption {
+        margin-top: 10px;
+    }
+}
+
 @media (max-width: 345px) {
     .greeting {
         font-size: 20px;
