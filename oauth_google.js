@@ -36,7 +36,27 @@ app.get('/google/callback', utils.isNotAuth, async (req, res) => {
 		}
 	});
 
-	utils.thirdPartyAuth(req, res, data, "google")
-});
+
+	await axios.get(env.URL_API + `/rest/users?mail=${data.mail}`, {
+		headers: {
+			"Authorization": "Bearer " + env.TOKEN_API
+		}
+	})
+		.then(async resp => {
+			if (resp.data) {
+				let user = resp.data[0]
+				console.log(user.password)
+				if (user.password.startsWith("google:")) 
+					utils.thirdPartyAuth(req, res, data, "google")
+				else 
+					res.redirect("/auth/login")
+			} else 
+				utils.thirdPartyAuth(req, res, data, "google")
+		})
+		.catch(err => {
+			res.render("status", {stts: env.BAD, lang: req.cookies.lang, dict: dict, msgs: ["500"]})
+		})
+})
+
 
 module.exports = app

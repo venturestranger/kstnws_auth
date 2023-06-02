@@ -7,12 +7,11 @@ const dict = require("./locale.js")
 const salt = bcrypt.genSaltSync(env.SALT_ROUNDS)
 
 function getHash(str) {
-	let hash = bcrypt.hashSync(str, salt)
-	return hash
+	return bcrypt.hashSync(str, salt)
 }
 
 function compareHash(str, hash) {
-	return bcrypt.compare(str, hash)
+	return bcrypt.compareSync(str, hash)
 }
 
 function isNotAuth(req, res, next) {
@@ -52,6 +51,8 @@ function stringifyParams(params) {
 		.then(async resp => {
 			if (resp.data) {
 				let user = resp.data[0]
+				let date = new Date()
+
 				if (user.password.startsWith(service)) {
 					res.cookie("id", user.id, {signed: true})
 					res.redirect("/")
@@ -72,7 +73,9 @@ function stringifyParams(params) {
 					region: "", 
 					city: "", 
 					bio: "",
-					birth_date: "1900-01-01"
+					birth_date: "1900-01-01",
+					date_registration: date.toISOString(),
+					date_edit: date.toISOString()
 				}, { 
 					headers: {
 						"Authorization": "Bearer " + env.TOKEN_API
@@ -122,7 +125,7 @@ function sendResetLetter(to, token) {
 
 module.exports = {
 	getHash,
-	compareHash, 
+	cmpareHash, 
 	sendVerification
 }
 */

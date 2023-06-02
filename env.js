@@ -1,8 +1,8 @@
 const env = {
 	SECRET_KEY: "domain",
-	SIGNUP_ATTEMPTS: 3,
+	SIGNUP_ATTEMPTS: 3000,
 	SIGNUP_LOCK: "1m",
-	LOGIN_ATTEMPTS: 3,
+	LOGIN_ATTEMPTS: 3000,
 	LOGIN_LOCK: "1m",
 	PORT: 4000,
 
@@ -12,6 +12,7 @@ const env = {
 	GOOGLE_API_URL: "https://www.googleapis.com/oauth2/v1/userinfo?alt=json",
 	GOOGLE_CLIENT_ID: "484591857221-6acq88tleltg8c0eaa7vob7ic6sq9elq.apps.googleusercontent.com",
 	GOOGLE_CLIENT_SECRET: "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",
+	//GOOGLE_REDIRECT_URL: "http://localhost:4000/auth/google/callback",
 	GOOGLE_REDIRECT_URL: "http://tvoykostanay.kz/auth/google/callback",
 
 	FACEBOOK_URL: "https://www.facebook.com/v4.0/dialog/oauth",

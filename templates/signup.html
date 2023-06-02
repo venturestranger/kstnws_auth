@@ -38,11 +38,9 @@
                 <li></li>
             </ul>
             <ul class="nameErrorMsg" id="nameErrorMsg">
-                <!-- Латинские или кириллические символы -->
                 <li><%= dict[lang].nameSymbols %></li>
             </ul>
             <ul class="nameErrorMsg" id="nameCapitalMsg"> 
-                <!-- Заглавная буква -->
                 <li><%= dict[lang].capitalLetter %></li>
             </ul>
             <div class="inputDiv">
@@ -51,11 +49,9 @@
                 <input class='inputReg' type='text' id="registerEmail" name="mail"></input>
             </div>
             <ul class="regEmptyEmailErrorMsg">
-                <!-- Заполните поле -->
                 <li><%= dict[lang].fillEmail %></li>
             </ul>
             <ul class="regNotValidEmailErr">
-                <!-- Неверный формат почты -->
                 <li><%= dict[lang].emailNotValid %></li>
             </ul>
             <div class="inputDiv">
@@ -66,13 +62,9 @@
                 <input class='inputReg' type='password' id="registerPassword" name="password"></input>
             </div>
             <ul class="regPasswordErrorMsg" id="passwordRequirements">
-                <!-- От 6 до 16 латинских символов -->
                 <li><%= dict[lang].passwordSymbols %></li>
-                <!-- Заглавная буква -->
                 <li><%= dict[lang].passwordCapital %></li>
-                <!-- Минимум одна цифра -->
                 <li><%= dict[lang].passwordMinNum %></li>
-                <!-- Без специальных символов -->
                 <li><%= dict[lang].passwordSpecialSymbols %></li>
             </ul>
             <button class='signInBtn'>
@@ -98,19 +90,19 @@
     <footer>
         <nav>
             <div class="navbar">
-                <a href="#" class="navbar-item">
+                <a href="/" class="navbar-item">
                     <img src="img/main.svg" alt="main">
                     <p><%= dict[lang].mainPage %></p>
                 </a>
-                <a href="#" class="navbar-item">
+                <a href="/createPost" class="navbar-item">
                     <img src="img/createPost.svg" alt="createPost">
                     <p><%= dict[lang].createPostPage %></p>
                 </a>
-                <a href="#" class="navbar-item">
+                <a href="/favorites" class="navbar-item">
                     <img src="img/favorites.svg" alt="favorites">
                     <p><%= dict[lang].favoritesPage %></p>
                 </a>
-                <a href="#" class="navbar-item">
+                <a href="/profile/publications" class="navbar-item">
                     <img src="img/profileImg.svg" alt="profile">
                     <p><%= dict[lang].profilePage %></p>
                 </a>

@@ -48,15 +48,17 @@ const registerLoginAttempt = function(req, res, next) {
 const verifyPage = function(req, res, mail) {
 	res.cookie("mail", mail, {signed: true, maxAge: 3600000})
 	let token = jwt.sign({mail: mail}, env.SECRET_KEY, {expiresIn: "1h"})
+	console.log(token)
 	// utils.sendVerifyLetter(mail, token)
 	res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: [`verify-link-sent`, token]})
 }
 
-const restorePage = function(req, res, mail) {
+const resetPage = function(req, res, mail) {
 	res.cookie("mail", mail, {signed: true, maxAge: 3600000})
 	let token = jwt.sign({mail: mail}, env.SECRET_KEY, {expiresIn: "1h"})
+	console.log(token)
 	// utils.sendResetLetter(mail, token)
-	res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: [`restore-link-sent`, token]})
+	res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: [`reset-link-sent`, token]})
 }
 
 app.get("/", (req, res)=>{
@@ -69,6 +71,8 @@ app.get("/verify/:link", (req, res) => {
 			res.render("status", {stts: env.INFO, lang: req.cookies.lang, dict: dict, msgs: ["NOTVER"]})
 		else {
 			let mail = req.signedCookies.mail
+			let date = new Date()
+
 			if (payload.mail == mail) 
 			await axios.get(env.URL_API + `/rest/users?mail=${mail}`, {
 					headers: {
@@ -92,7 +96,9 @@ app.get("/verify/:link", (req, res) => {
 								region: user.region,
 								city: user.city,
 								bio: user.bio,
-								birth_date: user.birth_date
+								birth_date: user.birth_date,
+								date_registration: user.date_registration,
+								date_edit: date.toISOString()
 							}, { 
 								headers: {
 									"Authorization": "Bearer " + env.TOKEN_API
@@ -124,14 +130,16 @@ app.route("/login")
 	.post(utils.isNotAuth, registerLoginAttempt, async (req, res) => {
 		let mail = req.body.mail
 		let password = req.body.password 
+
 		await axios.get(env.URL_API + `/rest/users?mail=${mail}`, {
 			headers: {
 				"Authorization": "Bearer " + env.TOKEN_API
 			}
 		})
-			.then(resp => {
+			.then(async resp => {
 				if (resp.data) {
 					let user = resp.data[0]
+
 					if (user.password.startsWith("google:")) 
 						res.redirect(`/auth/google`)
 					else if (user.is_verified == false)
@@ -164,6 +172,7 @@ app.route("/signup")
 		let second_name = req.body.second_name
 		let mail = req.body.mail
 		let password = req.body.password
+		let date = new Date()
 
 		await axios.get(env.URL_API + `/rest/users?mail=${mail}`, {
 			headers: {
@@ -194,7 +203,9 @@ app.route("/signup")
 						region: "",
 						city: "",
 						bio: "",
-						birth_date: "1900-01-01"
+						birth_date: "1900-01-01",
+						date_registration: date.toISOString(),
+						date_edit: date.toISOString()
 					}, {
 						headers: {
 							"Authorization": "Bearer " + env.TOKEN_API,
@@ -214,7 +225,7 @@ app.route("/signup")
 	})
 
 
-app.route("/restore")
+app.route("/reset")
 	.get(utils.isNotAuth, (req, res) => {
 		res.render("forgotEmail", {lang: req.cookies.lang, dict: dict, msgs: ["200"]})
 	})
@@ -233,7 +244,7 @@ app.route("/restore")
 					else if (user.is_verified == false)
 						verifyPage(req, res, mail)
 					else 
-						restorePage(req, res, mail)
+						resetPage(req, res, mail)
 				} else 
 					res.render("status", {stts: env.BAD, lang: req.cookies.lang, dict: dict, msgs: ["401"]})
 			})
@@ -243,20 +254,22 @@ app.route("/restore")
 
 	})
 
-app.route("/restore/:link")
+app.route("/reset/:link")
 	.get(utils.isNotAuth, (req, res) => {
 		jwt.verify(req.params.link, env.SECRET_KEY, async (err, payload) => {
 			if (err) 
 				res.render("status", {stts: env.BAD, lang: req.cookies.lang, dict: dict, msgs: ["500"]})
 			else {
 				let mail = req.signedCookies.mail
-				res.render("forgotPassword", {lang: req.cookies.lang, dict: dict, msgs: ["200"]})
+				res.render("forgotPassword", {lang: req.cookies.lang, dict: dict})
 			}
 		})
 	})
 	.post(utils.isNotAuth, async (req, res) => {
 		let password = req.body.password
 		let mail = req.signedCookies.mail
+		let date = new Date()
+
 		await axios.get(env.URL_API + `/rest/users?mail=${mail}`, {
 				headers: {
 					"Authorization": "Bearer " + env.TOKEN_API
@@ -266,8 +279,8 @@ app.route("/restore/:link")
 					if (resp.data) {
 						let user = resp.data[0]
 						await axios.put(env.URL_API + `/rest/users?mail=${mail}`, {
-							is_verified: user.verified,
-							password: user.password,
+							is_verified: user.is_verified,
+							password: utils.getHash(password),
 							name: user.name,
 							second_name: user.second_name,
 							picture_url: user.profile_url,
@@ -279,7 +292,9 @@ app.route("/restore/:link")
 							region: user.region,
 							city: user.city,
 							bio: user.bio,
-							birth_date: user.birth_date
+							birth_date: user.birth_date,
+							date_registration: user.date_registration,
+							date_edit: date.toISOString()
 						}, { 
 							headers: {
 								"Authorization": "Bearer " + env.TOKEN_API
