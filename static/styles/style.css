@@ -45,6 +45,11 @@
 
 body {
     background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow-y: auto;
 }
 
 .profile {
@@ -54,7 +59,8 @@ body {
     align-items: center;
     justify-content: center;
     font-family: 'Mazzard M Medium';
-    height: 90vh;
+    margin-top: 20px;
+    margin-bottom: 80px;
 }
 
 .forgotEmail {
@@ -64,7 +70,8 @@ body {
     align-items: center;
     justify-content: center;
     font-family: 'Mazzard M Medium';
-    height: 90vh;
+    margin-top: 20px;
+    margin-bottom: 80px;
 }
 
 .forgotPassword {
@@ -74,7 +81,8 @@ body {
     align-items: center;
     justify-content: center;
     font-family: 'Mazzard M Medium';
-    height: 90vh;
+    margin-top: 20px;
+    margin-bottom: 80px;
 }
 
 .logoContainer {
@@ -274,7 +282,8 @@ body {
     align-items: center;
     justify-content: center;
     font-family: 'Mazzard M Medium';
-    height: 90vh;
+    margin-top: 20px;
+    margin-bottom: 80px;
 }
 
 .nameLabel {
@@ -426,13 +435,13 @@ body {
 }
 
 .statusDiv {
-    background-color: #F5F8FE;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-family: 'Mazzard M Medium';
-    height: 90vh;
+    margin-top: 20px;
+    margin-bottom: 80px;
 }
 
 .statusWindow {
@@ -492,12 +501,12 @@ body {
         padding-top: 5px;
         font-weight: 500;
     }
-    
+
     .greet {
         color: #8C8C8C;
         padding-top: 4px;
     }
-    
+
     .secondGreet {
         color: #8C8C8C;
         padding-top: 4px;
@@ -510,20 +519,16 @@ body {
         margin-bottom: 7px;
     }
 
-    .profile {
-        height: 90vh;
-    }
-
     .greeting {
         padding-top: 5px;
         font-weight: 500;
     }
-    
+
     .greet {
         color: #8C8C8C;
         padding-top: 4px;
     }
-    
+
     .secondGreet {
         color: #8C8C8C;
         padding-top: 4px;
@@ -536,7 +541,7 @@ body {
     .labelEmail {
         top: 4px;
     }
-    
+
     .labelPassword {
         top: 4px;
     }
@@ -578,7 +583,7 @@ body {
     .greeting {
         font-size: 20px;
     }
-    
+
     .greet {
         font-size: 16px;
     }
@@ -628,15 +633,15 @@ body {
     .signInWithBtn {
         width: 270px;
     }
-    
+
     .signInWithIcon {
         width: 20px;
         height: 20px;
     }
-    
+
     .signInWithCaption {
         position: relative;
         top: 12px;
         left: 5px;
     }
-  }
+}
