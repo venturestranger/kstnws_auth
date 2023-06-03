@@ -13,7 +13,6 @@ app.set("views", path.join(__dirname, "templates"))
 app.engine("html", require("ejs").renderFile);
 app.set('view engine', 'html');
 
-app.use(express.static("static"))
 app.use(cookieParser(env.SECRET_KEY, {signed: true}))
 app.use(express.urlencoded({extended: true}))
 
@@ -231,6 +230,7 @@ app.route("/reset")
 	})
 	.post(utils.isNotAuth, async (req, res) => {
 		let mail = req.body.mail
+
 		await axios.get(env.URL_API + `/rest/users?mail=${mail}`, {
 			headers: {
 				"Authorization": "Bearer " + env.TOKEN_API
@@ -246,7 +246,7 @@ app.route("/reset")
 					else 
 						resetPage(req, res, mail)
 				} else 
-					res.render("status", {stts: env.BAD, lang: req.cookies.lang, dict: dict, msgs: ["401"]})
+					res.redirect("/auth/signup")
 			})
 			.catch(err => {
 				res.render("status", {stts: env.BAD, lang: req.cookies.lang, dict: dict, msgs: ["500"]})
