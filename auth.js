@@ -13,6 +13,7 @@ app.set("views", path.join(__dirname, "templates"))
 app.engine("html", require("ejs").renderFile);
 app.set('view engine', 'html');
 
+app.use(express.static("static"))
 app.use(cookieParser(env.SECRET_KEY, {signed: true}))
 app.use(express.urlencoded({extended: true}))
 

@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Status Page</title>
-    <link rel="stylesheet" href="/styles/style.css">
-    <link rel="stylesheet" href="/styles/navbar.css">  
+    <link rel="stylesheet" href="/auth/styles/style.css">
+    <link rel="stylesheet" href="/auth/styles/navbar.css">  
 </head>
 
 <body>
@@ -15,11 +15,11 @@
         <div class="statusWindow">
             <div class="statusImgContainer">
 			<% if (stts == 1) { %>
-                <img src="/img/successSign.svg" alt="status" class="statusImg">
+                <img src="/auth/img/successSign.svg" alt="status" class="statusImg">
 			<% } else if (stts == 2) { %>
-                <img src="/img/alertSign.svg" alt="status" class="statusImg">
+                <img src="/auth/img/alertSign.svg" alt="status" class="statusImg">
 			<% } else { %>
-                <img src="/img/dangerSign.svg" alt="status" class="statusImg">
+                <img src="/auth/img/dangerSign.svg" alt="status" class="statusImg">
 			<% } %>
             </div>
             <% for (msg of msgs) { %>
@@ -34,19 +34,19 @@
         <nav>
             <div class="navbar">
                 <a href="/" class="navbar-item">
-                    <img src="/img/main.svg" alt="main">
+                    <img src="/auth/img/main.svg" alt="main">
                     <p><%= dict[lang].mainPage %></p>
                 </a>
                 <a href="/createPost" class="navbar-item">
-                    <img src="/img/createPost.svg" alt="createPost">
+                    <img src="/auth/img/createPost.svg" alt="createPost">
                     <p><%= dict[lang].createPostPage %></p>
                 </a>
                 <a href="/favorites" class="navbar-item">
-                    <img src="/img/favorites.svg" alt="favorites">
+                    <img src="/auth/img/favorites.svg" alt="favorites">
                     <p><%= dict[lang].favoritesPage %></p>
                 </a>
                 <a href="/profile/publications" class="navbar-item">
-                    <img src="/img/profileImg.svg" alt="profile">
+                    <img src="/auth/img/profileImg.svg" alt="profile">
                     <p><%= dict[lang].profilePage %></p>
                 </a>
             </div>

@@ -5,7 +5,6 @@ const oauthGoogle = require("./oauth_google.js")
 const oauthFacebook = require("./oauth_facebook.js")
 
 app = express()
-app.use(express.static("static"))
 app.use("/auth", auth)
 app.use("/auth", oauthGoogle)
 // app.use("/auth", oauthFacebook)

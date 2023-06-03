@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" href="/styles/style.css">
-    <link rel="stylesheet" href="/styles/navbar.css">
+    <link rel="stylesheet" href="/auth/styles/style.css">
+    <link rel="stylesheet" href="/auth/styles/navbar.css">
 </head>
 
 <body>
     <div class='profile'>
         <div class='logoContainer'>
-            <img src='/img/logo.png' class='logo'></img>
+            <img src='/auth/img/logo.png' class='logo'></img>
         </div>
         <h2 class='greeting'>
             <%= dict[lang].greeting %>
@@ -23,7 +23,7 @@
         </p>
         <form action="/auth/login" method="post" id="loginForm" class='signForm'>
             <div class="inputDiv">
-                <img src='/img/dog.svg' class='inputIcon' id="loginEmailIcon"></img>
+                <img src='/auth/img/dog.svg' class='inputIcon' id="loginEmailIcon"></img>
                 <label class='labelEmail'>E-mail</label>
                 <input class='input' type='text' id="emailInput" name="mail"></input>
                 <ul class="emailErrorMsg" id="emailErrorMsg">
@@ -34,7 +34,7 @@
                 </ul>
             </div>
             <div class="inputDiv">
-                <img src='/img/passwordIcon.svg' class='inputIcon' id="loginPasswordIcon"></img>
+                <img src='/auth/img/passwordIcon.svg' class='inputIcon' id="loginPasswordIcon"></img>
                 <label class='labelPassword'>
                     <%= dict[lang].labelPassword %>
                 </label>
@@ -55,7 +55,7 @@
         </a>
         <div class='anotherOptions'>
             <p class='anotherOptionsCaption'><%= dict[lang].anotherOptionsCaption %></p>
-            <a class='signInWithBtn' href='/auth/google'> <img src='/img/googleIcon.svg' class='signInWithIcon'></img> <span
+            <a class='signInWithBtn' href='/auth/google'> <img src='/auth/img/googleIcon.svg' class='signInWithIcon'></img> <span
                     class='signInWithCaption'><%= dict[lang].signWithGoogle %></span></a>
         </div>
         <p class='noAccountCaption'><%= dict[lang].noAccountCaption %></p>
@@ -65,25 +65,25 @@
         <nav>
             <div class="navbar">
                 <a href="/" class="navbar-item">
-                    <img src="/img/main.svg" alt="main">
+                    <img src="/auth/img/main.svg" alt="main">
                     <p><%= dict[lang].mainPage %></p>
                 </a>
                 <a href="/createPost" class="navbar-item">
-                    <img src="/img/createPost.svg" alt="createPost">
+                    <img src="/auth/img/createPost.svg" alt="createPost">
                     <p><%= dict[lang].createPostPage %></p>
                 </a>
                 <a href="/favorites" class="navbar-item">
-                    <img src="/img/favorites.svg" alt="favorites">
+                    <img src="/auth/img/favorites.svg" alt="favorites">
                     <p><%= dict[lang].favoritesPage %></p>
                 </a>
                 <a href="/profile/publications" class="navbar-item">
-                    <img src="/img/profileImg.svg" alt="profile">
+                    <img src="/auth/img/profileImg.svg" alt="profile">
                     <p><%= dict[lang].profilePage %></p>
                 </a>
             </div>
         </nav>
     </footer>
-    <script src="/scripts/login.js"></script>
+    <script src="/auth/scripts/login.js"></script>
 </body>
 
 </html>

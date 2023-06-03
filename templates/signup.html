@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Page</title>
-    <link rel="stylesheet" href="/styles/style.css">
-    <link rel="stylesheet" href="/styles/navbar.css">
+    <link rel="stylesheet" href="/auth/styles/style.css">
+    <link rel="stylesheet" href="/auth/styles/navbar.css">
 </head>
 
 <body>
     <div class='registerForm'>
         <div class='logoContainer'>
-            <img src='/img/logo.png' class='logo'></img>
+            <img src='/auth/img/logo.png' class='logo'></img>
         </div>
         <h2 class='greeting'>
             <%= dict[lang].greeting %>
@@ -44,7 +44,7 @@
                 <li><%= dict[lang].capitalLetter %></li>
             </ul>
             <div class="inputDiv">
-                <img src='/img/dog.svg' class='inputRegIcon' id="emailRegIcon"></img>
+                <img src='/auth/img/dog.svg' class='inputRegIcon' id="emailRegIcon"></img>
                 <label class='regLabelEmail'>E-mail</label>
                 <input class='inputReg' type='text' id="registerEmail" name="mail"></input>
             </div>
@@ -55,7 +55,7 @@
                 <li><%= dict[lang].emailNotValid %></li>
             </ul>
             <div class="inputDiv">
-                <img src='/img/passwordIcon.svg' class='inputRegIcon' id="passwordRegIcon"></img>
+                <img src='/auth/img/passwordIcon.svg' class='inputRegIcon' id="passwordRegIcon"></img>
                 <label class='regLabelPassword'>
                     <%= dict[lang].labelPassword %>
                 </label>
@@ -75,7 +75,7 @@
             <p class='anotherOptionsCaption'>
                 <%= dict[lang].anotherOptionsCaption %>
             </p>
-            <a href="/auth/google" class='signInWithBtn'> <img src='/img/googleIcon.svg' class='signInWithIcon'></img>
+            <a href="/auth/google" class='signInWithBtn'> <img src='/auth/img/googleIcon.svg' class='signInWithIcon'></img>
                 <span class='signInWithCaption'>
                     <%= dict[lang].signWithGoogle %>
                 </span></a>
@@ -91,19 +91,19 @@
         <nav>
             <div class="navbar">
                 <a href="/" class="navbar-item">
-                    <img src="/img/main.svg" alt="main">
+                    <img src="/auth/img/main.svg" alt="main">
                     <p><%= dict[lang].mainPage %></p>
                 </a>
                 <a href="/createPost" class="navbar-item">
-                    <img src="/img/createPost.svg" alt="createPost">
+                    <img src="/auth/img/createPost.svg" alt="createPost">
                     <p><%= dict[lang].createPostPage %></p>
                 </a>
                 <a href="/favorites" class="navbar-item">
-                    <img src="/img/favorites.svg" alt="favorites">
+                    <img src="/auth/img/favorites.svg" alt="favorites">
                     <p><%= dict[lang].favoritesPage %></p>
                 </a>
                 <a href="/profile/publications" class="navbar-item">
-                    <img src="/img/profileImg.svg" alt="profile">
+                    <img src="/auth/img/profileImg.svg" alt="profile">
                     <p><%= dict[lang].profilePage %></p>
                 </a>
             </div>
@@ -176,7 +176,7 @@
             lastNameInput.addEventListener('blur', blur)
         }
     </script>
-    <script src="/scripts/signup.js"></script>
+    <script src="/auth/scripts/signup.js"></script>
 </body>
 
 </html>
