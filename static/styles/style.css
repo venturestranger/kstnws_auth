@@ -45,6 +45,11 @@
 
 body {
     background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    overflow-y: auto;
 }
 
 .profile {
@@ -54,7 +59,8 @@ body {
     align-items: center;
     justify-content: center;
     font-family: 'Mazzard M Medium';
-    height: 90vh;
+    margin-top: 20px;
+    margin-bottom: 80px;
 }
 
 .forgotEmail {
@@ -64,7 +70,8 @@ body {
     align-items: center;
     justify-content: center;
     font-family: 'Mazzard M Medium';
-    height: 90vh;
+    margin-top: 20px;
+    margin-bottom: 80px;
 }
 
 .forgotPassword {
@@ -74,7 +81,8 @@ body {
     align-items: center;
     justify-content: center;
     font-family: 'Mazzard M Medium';
-    height: 90vh;
+    margin-top: 20px;
+    margin-bottom: 80px;
 }
 
 .logoContainer {
@@ -205,8 +213,6 @@ body {
 .forgotPasswordBtn {
     border: none;
     background: transparent;
-    width: 122px;
-    height: 11px;
     margin-top: 20px;
     margin-left: 190px;
     font-family: 'Mazzard M Medium';
@@ -230,7 +236,7 @@ body {
     background-color: transparent;
     display: flex;
     font-family: 'Mazzard M Medium';
-    margin-top: 16px;
+    margin-top: 8px;
     border: 1px solid #B9B9B9;
     color: #AAAAAA;
     text-align: start;
@@ -248,9 +254,8 @@ body {
 }
 
 .signInWithCaption {
-    position: relative;
-    top: 12px;
-    left: 5px;
+    margin-top: 9px;
+    margin-left: 5px;
 }
 
 .noAccountCaption {
@@ -274,7 +279,8 @@ body {
     align-items: center;
     justify-content: center;
     font-family: 'Mazzard M Medium';
-    height: 90vh;
+    margin-top: 20px;
+    margin-bottom: 80px;
 }
 
 .nameLabel {
@@ -426,13 +432,13 @@ body {
 }
 
 .statusDiv {
-    background-color: #F5F8FE;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-family: 'Mazzard M Medium';
-    height: 90vh;
+    margin-top: 20px;
+    margin-bottom: 80px;
 }
 
 .statusWindow {
@@ -490,98 +496,11 @@ a {
     text-decoration: none;
 }
 
-@media (max-height: 750px) {
-    .greeting {
-        padding-top: 5px;
-        font-weight: 500;
-    }
-    
-    .greet {
-        color: #8C8C8C;
-        padding-top: 4px;
-    }
-    
-    .secondGreet {
-        color: #8C8C8C;
-        padding-top: 4px;
-    }
-}
-
-@media (max-height: 700px) {
-    .input {
-        margin-top: 10px;
-        margin-bottom: 7px;
-    }
-
-    .profile {
-        height: 90vh;
-    }
-
-    .greeting {
-        padding-top: 5px;
-        font-weight: 500;
-    }
-    
-    .greet {
-        color: #8C8C8C;
-        padding-top: 4px;
-    }
-    
-    .secondGreet {
-        color: #8C8C8C;
-        padding-top: 4px;
-    }
-
-    .signForm {
-        margin-top: 10px;
-    }
-
-    .labelEmail {
-        top: 4px;
-    }
-    
-    .labelPassword {
-        top: 4px;
-    }
-
-    .inputIcon {
-        top: 17px;
-    }
-
-    .input {
-        height: 35px;
-    }
-
-    .signInBtn {
-        height: 35px;
-    }
-
-    .signInWithBtn {
-        height: 35px;
-    }
-
-    .signInWithIcon {
-        margin-top: 6px;
-    }
-
-    .signInWithCaption {
-        top: 9px;
-    }
-
-    .anotherOptionsCaption {
-        margin: 5px 0px 0px 0px;
-    }
-
-    .haveAccountCaption {
-        margin-top: 10px;
-    }
-}
-
 @media (max-width: 345px) {
     .greeting {
         font-size: 20px;
     }
-    
+
     .greet {
         font-size: 16px;
     }
@@ -631,15 +550,9 @@ a {
     .signInWithBtn {
         width: 270px;
     }
-    
+
     .signInWithIcon {
         width: 20px;
         height: 20px;
     }
-    
-    .signInWithCaption {
-        position: relative;
-        top: 12px;
-        left: 5px;
-    }
-  }
+}
