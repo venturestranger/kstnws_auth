@@ -44,7 +44,10 @@ const dict = {
 		"fillName": "Заполните поле имя",
 		"fillLastName": "Заполните поле Фамилия",
 		"backToMain": "Вернуться на главную",
-		"passwordsMismatch": "Пароли не совпадают"
+		"passwordsMismatch": "Пароли не совпадают",
+		"restorePassword": "Восстановить пароль",
+		"updatePassword": "Изменить пароль",
+		"registerAccount" : "Зарегистрируйте аккаунт"
 	},
 	"ru": {
 		"200": "Действие выполнено успешно.",
