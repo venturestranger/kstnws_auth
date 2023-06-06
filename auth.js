@@ -50,7 +50,7 @@ const verifyPage = function(req, res, mail) {
 	let token = jwt.sign({mail: mail}, env.SECRET_KEY, {expiresIn: "1h"})
 	console.log(token)
 	// utils.sendVerifyLetter(mail, token)
-	res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: [`verify-link-sent`, token]})
+	res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: [`verify-link-sent`]})
 }
 
 const resetPage = function(req, res, mail) {
@@ -58,7 +58,7 @@ const resetPage = function(req, res, mail) {
 	let token = jwt.sign({mail: mail}, env.SECRET_KEY, {expiresIn: "1h"})
 	console.log(token)
 	// utils.sendResetLetter(mail, token)
-	res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: [`reset-link-sent`, token]})
+	res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: [`reset-link-sent`]})
 }
 
 app.get("/", (req, res)=>{
