@@ -214,7 +214,8 @@ body {
     border: none;
     background: transparent;
     margin-top: 20px;
-    margin-left: 190px;
+    align-self: end;
+    margin-right: 10px;
     font-family: 'Mazzard M Medium';
     color: #ED5454;
     font-size: 16px;
@@ -248,15 +249,15 @@ body {
 
 .signInWithIcon {
     margin-left: 7px;
-    margin-top: 10px;
+    align-self: center;
     width: 24px;
     height: 24px;
 }
 
 .signInWithCaption {
-    margin-top: 9px;
+    align-self: center;
     margin-left: 5px;
-}
+}   
 
 .noAccountCaption {
     margin-top: 25px;
@@ -554,5 +555,13 @@ a {
     .signInWithIcon {
         width: 20px;
         height: 20px;
+    }
+
+    .statusWindow {
+        width: 270px;
+    }
+
+    .buttonDiv {
+        width: 270px;
     }
 }
