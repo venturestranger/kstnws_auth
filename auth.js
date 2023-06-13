@@ -47,7 +47,7 @@ const registerLoginAttempt = function(req, res, next) {
 
 const verifyPage = function(req, res, mail) {
 	res.cookie("mail", mail, {signed: true, maxAge: 3600000})
-	let token = jwt.sign({mail: mail}, env.SECRET_KEY, {expiresIn: "1h"})
+	let token = jwt.sign({mail: mail, iss: env.ISSUER}, env.SECRET_KEY, {expiresIn: "1h"})
 	console.log(token)
 	// utils.sendVerifyLetter(mail, token)
 	res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: [`verify-link-sent`]})
@@ -55,7 +55,7 @@ const verifyPage = function(req, res, mail) {
 
 const resetPage = function(req, res, mail) {
 	res.cookie("mail", mail, {signed: true, maxAge: 3600000})
-	let token = jwt.sign({mail: mail}, env.SECRET_KEY, {expiresIn: "1h"})
+	let token = jwt.sign({mail: mail, iss: env.ISSUER}, env.SECRET_KEY, {expiresIn: "1h"})
 	console.log(token)
 	// utils.sendResetLetter(mail, token)
 	res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: [`reset-link-sent`]})
@@ -73,7 +73,7 @@ app.get("/verify/:link", (req, res) => {
 			let mail = req.signedCookies.mail
 			let date = new Date()
 
-			if (payload.mail == mail) 
+			if (payload.mail == mail && payload.iss == env.ISSUER) 
 			await axios.get(env.URL_API + `/rest/users?mail=${mail}`, {
 					headers: {
 						"Authorization": "Bearer " + env.TOKEN_API
@@ -105,7 +105,8 @@ app.get("/verify/:link", (req, res) => {
 								}
 							})
 								.then(resp => {
-									res.cookie("id", user.id, {signed: true})
+									res.cookie("id", jwt.sign({mail: mail, iss: env.ISSUER}, env.SECRET_KEY, {expiresIn: "60d"}))
+									res.cookie("is_auth", true, {expiresIn: "60d", signed: true}))
 									res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: ["VER"]})
 								})
 								.catch(err => {
@@ -145,7 +146,8 @@ app.route("/login")
 					else if (user.is_verified == false)
 						verifyPage(req, res, mail)
 					else if (utils.compareHash(password, user.password)) {
-						res.cookie("id", user.id, {signed: true})
+						res.cookie("id", jwt.sign({mail: mail, iss: env.ISSUER}, env.SECRET_KEY, {expiresIn: "60d"}))
+						res.cookie("is_auth", true, {expiresIn: "60d", signed: true}))
 						res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: ["200"]})
 					} else 
 						res.render("status", {stts: env.BAD, lang: req.cookies.lang, dict: dict, msgs: ["401"]})
@@ -159,6 +161,7 @@ app.route("/login")
 
 app.get("/logout", utils.isAuth, (req, res) => {
 	res.clearCookie("id")
+	res.clearCookie("is_auth")
 	res.clearCookie("mail")
 	res.redirect(`/`)
 })

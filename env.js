@@ -1,4 +1,6 @@
 const env = {
+	ISSUER = "domain",
+
 	SECRET_KEY: "domain",
 	SIGNUP_ATTEMPTS: 3000,
 	SIGNUP_LOCK: "1m",

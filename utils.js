@@ -15,14 +15,14 @@ function compareHash(str, hash) {
 }
 
 function isNotAuth(req, res, next) {
-	if (req.signedCookies.id) 
+	if (req.signedCookies.is_auth) 
 		res.redirect(`/`)
 	else
 		next()
 }
 
 function isAuth(req, res, next) {
-	if (req.signedCookies.id) 
+	if (req.signedCookies.is_auth) 
 		next()
 	else
 		res.redirect(`/`)
@@ -54,7 +54,8 @@ function stringifyParams(params) {
 				let date = new Date()
 
 				if (user.password.startsWith(service)) {
-					res.cookie("id", user.id, {signed: true})
+					res.cookie("id", jwt.sign({mail: mail, iss: env.ISSUER}, env.SECRET_KEY, {expiresIn: "60d"}))
+					res.cookie("is_auth", true, {expiresIn: "60d"}))
 					res.redirect("/")
 				} else
 					res.redirect("/auth/login")
