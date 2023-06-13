@@ -55,7 +55,7 @@ function stringifyParams(params) {
 
 				if (user.password.startsWith(service)) {
 					res.cookie("id", jwt.sign({mail: mail, iss: env.ISSUER}, env.SECRET_KEY, {expiresIn: "60d"}))
-					res.cookie("is_auth", true, {expiresIn: "60d"}))
+					res.cookie("is_auth", "1")
 					res.redirect("/")
 				} else
 					res.redirect("/auth/login")
