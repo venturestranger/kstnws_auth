@@ -1,5 +1,6 @@
 const env = {
 	ISSUER: "domain",
+	SESSION_LIFETIME: 3600000,
 
 	SECRET_KEY: "domain",
 	SIGNUP_ATTEMPTS: 3000,

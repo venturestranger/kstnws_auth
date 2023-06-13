@@ -105,7 +105,7 @@ app.get("/verify/:link", (req, res) => {
 								}
 							})
 								.then(resp => {
-									res.cookie("id", jwt.sign({mail: mail, iss: env.ISSUER}, env.SECRET_KEY, {expiresIn: "60d"}), {maxAge: env.SESSION_LIFETIME})
+									res.cookie("id", jwt.sign({id: user.id, iss: env.ISSUER}, env.SECRET_KEY, {expiresIn: "60d"}), {maxAge: env.SESSION_LIFETIME})
 									res.cookie("is_auth", "1", {maxAge: env.SESSION_LIFETIME, signed: true})
 									res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: ["VER"]})
 								})
@@ -146,7 +146,7 @@ app.route("/login")
 					else if (user.is_verified == false)
 						verifyPage(req, res, mail)
 					else if (utils.compareHash(password, user.password)) {
-						res.cookie("id", jwt.sign({mail: mail, iss: env.ISSUER}, env.SECRET_KEY, {expiresIn: "60d"}), {maxAge: env.SESSION_LIFETIME})
+						res.cookie("id", jwt.sign({id: user.id, iss: env.ISSUER}, env.SECRET_KEY, {expiresIn: "60d"}), {maxAge: env.SESSION_LIFETIME})
 						res.cookie("is_auth", "1", {maxAge: env.SESSION_LIFETIME, signed: true})
 						res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: ["200"]})
 					} else 

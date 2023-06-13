@@ -54,7 +54,7 @@ function stringifyParams(params) {
 				let date = new Date()
 
 				if (user.password.startsWith(service)) {
-					res.cookie("id", jwt.sign({mail: mail, iss: env.ISSUER}, env.SECRET_KEY, {expiresIn: "60d"}), {maxAge: env.SESSION_LIFETIME})
+					res.cookie("id", jwt.sign({id: user.id, iss: env.ISSUER}, env.SECRET_KEY, {expiresIn: "60d"}), {maxAge: env.SESSION_LIFETIME})
 					res.cookie("is_auth", "1", {maxAge: env.SESSION_LIFETIME, signed: true})
 					res.redirect("/")
 				} else
