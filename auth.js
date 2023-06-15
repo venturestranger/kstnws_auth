@@ -66,17 +66,6 @@ app.get("/", (req, res)=>{
 	res.send("The module is working")
 })
 
-app.get("/token/:link", (req, res)=>{
-	jwt.verify(req.params.link, env.SECRET_KEY, async (err, payload) => {
-		if (err) 
-			res.send("null")
-		else if (payload.iss == env.ISSUER) 
-			res.send(`${payload.id}`)
-		else
-			res.send("null")
-	})
-})
-
 app.get("/verify/:link", (req, res) => {
 	jwt.verify(req.params.link, env.SECRET_KEY, async (err, payload) => {
 		if (err) 
