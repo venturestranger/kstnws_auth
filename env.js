@@ -4,9 +4,10 @@ const env = {
 
 	SECRET_KEY: "domain",
 	SIGNUP_ATTEMPTS: 3000,
-	SIGNUP_LOCK: "1m",
+	SIGNUP_LOCK: 3600000,
 	LOGIN_ATTEMPTS: 3000,
-	LOGIN_LOCK: "1m",
+	LOGIN_LOCK: 3600000,
+	TOKEN_LIFETIME: "60d",
 	PORT: 4000,
 
 	URL_API: "http://tvoykostanay.kz/api",

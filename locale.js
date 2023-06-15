@@ -18,6 +18,7 @@ const dict = {
 		"secondGreet": "Портал со свежими новостями",
 		"labelPassword": "Пароль",
 		"signInBtn": "Войти",
+		"signUpBtn": "Зарегистрироваться",
 		"forgotPasswordBtn": "Забыли пароль?",
 		"anotherOptionsCaption": "Другие варианты входа:",
 		"signWithGoogle": "Войти через Google",

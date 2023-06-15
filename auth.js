@@ -21,12 +21,12 @@ const registerSignupAttempt = function(req, res, next) {
 	let attempts = parseInt(req.cookies.signupAttempts)
 	if (!isNaN(attempts)) {
 		if (attempts < env.SIGNUP_ATTEMPTS && attempts > -1) {
-			res.cookie("signupAttempts", attempts + 1, {expiresIn: env.SIGNUP_LOCK})
+			res.cookie("signupAttempts", attempts + 1, {maxAge: env.SIGNUP_LOCK})
 			next()
 		} else 
 			res.render("status", {stts: env.BAD, lang: req.cookies.lang, dict: dict, msgs: ["429"]})
 	} else {
-		res.cookie("signupAttempts", 0, {expiresIn: env.SIGNUP_LOCK})
+		res.cookie("signupAttempts", 0, {maxAge: env.SIGNUP_LOCK})
 		next()
 	}
 }
@@ -35,34 +35,46 @@ const registerLoginAttempt = function(req, res, next) {
 	let attempts = parseInt(req.cookies.loginAttempts)
 	if (!isNaN(attempts)) {
 		if (attempts < env.LOGIN_ATTEMPTS && attempts > -1) {
-			res.cookie("loginAttempts", attempts + 1, {expiresIn: env.LOGIN_LOCK})
+			res.cookie("loginAttempts", attempts + 1, {maxAge: env.LOGIN_LOCK})
 			next()
 		} else 
 			res.render("status", {stts: env.BAD, lang: req.cookies.lang, dict: dict, msgs: ["429"]})
 	} else {
-		res.cookie("loginAttempts", 0, {expiresIn: env.LOGIN_LOCK})
+		res.cookie("loginAttempts", 0, {maxAge: env.LOGIN_LOCK})
 		next()
 	}
 }
 
 const verifyPage = function(req, res, mail) {
-	res.cookie("mail", mail, {signed: true, maxAge: 3600000})
-	let token = jwt.sign({mail: mail, iss: env.ISSUER}, env.SECRET_KEY, {expiresIn: "1h"})
+	res.cookie("mail", mail, {signed: true, maxAge: env.SESSION_LIFETIME})
+	let token = jwt.sign({mail: mail, iss: env.ISSUER}, env.SECRET_KEY, {expiresIn: env.TOKEN_LIFETIME})
 	console.log(token)
 	// utils.sendVerifyLetter(mail, token)
 	res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: [`verify-link-sent`]})
 }
 
 const resetPage = function(req, res, mail) {
-	res.cookie("mail", mail, {signed: true, maxAge: 3600000})
-	let token = jwt.sign({mail: mail, iss: env.ISSUER}, env.SECRET_KEY, {expiresIn: "1h"})
+	res.cookie("mail", mail, {signed: true, maxAge: env.SESSION_LIFETIME})
+	let token = jwt.sign({mail: mail, iss: env.ISSUER}, env.SECRET_KEY, {expiresIn: env.TOKEN_LIFETIME})
 	console.log(token)
 	// utils.sendResetLetter(mail, token)
 	res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: [`reset-link-sent`]})
 }
 
 app.get("/", (req, res)=>{
-	res.render("index")
+	console.log("The module is working")
+	res.send("The module is working")
+})
+
+app.get("/token/:link", (req, res)=>{
+	jwt.verify(req.params.link, env.SECRET_KEY, async (err, payload) => {
+		if (err) 
+			res.send("null")
+		else if (payload.iss == env.ISSUER) 
+			res.send(`${payload.id}`)
+		else
+			res.send("null")
+	})
 })
 
 app.get("/verify/:link", (req, res) => {
@@ -105,7 +117,7 @@ app.get("/verify/:link", (req, res) => {
 								}
 							})
 								.then(resp => {
-									res.cookie("id", jwt.sign({id: user.id, iss: env.ISSUER}, env.SECRET_KEY, {expiresIn: "60d"}), {maxAge: env.SESSION_LIFETIME})
+									res.cookie("id", jwt.sign({id: user.id, iss: env.ISSUER}, env.SECRET_KEY, {expiresIn: env.TOKEN_LIFETIME}), {maxAge: env.SESSION_LIFETIME})
 									res.cookie("is_auth", "1", {maxAge: env.SESSION_LIFETIME, signed: true})
 									res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: ["VER"]})
 								})
@@ -146,7 +158,7 @@ app.route("/login")
 					else if (user.is_verified == false)
 						verifyPage(req, res, mail)
 					else if (utils.compareHash(password, user.password)) {
-						res.cookie("id", jwt.sign({id: user.id, iss: env.ISSUER}, env.SECRET_KEY, {expiresIn: "60d"}), {maxAge: env.SESSION_LIFETIME})
+						res.cookie("id", jwt.sign({id: user.id, iss: env.ISSUER}, env.SECRET_KEY, {expiresIn: env.TOKEN_LIFETIME}), {maxAge: env.SESSION_LIFETIME})
 						res.cookie("is_auth", "1", {maxAge: env.SESSION_LIFETIME, signed: true})
 						res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: ["200"]})
 					} else 
