@@ -25,10 +25,12 @@ function validateRegisterForm(event) {
   const lastName = document.getElementById("surnameInput").value;
   const regEmailInputValue = document.getElementById("registerEmail").value;
 
+  
+
   let isValid = true;
 
 
-  if (!firstName.match(nameRegex) || !lastName.match(nameRegex)) {
+  if (!firstName.trim().match(nameRegex) || !lastName.trim().match(nameRegex)) {
     validateNames();
     isValid = false;
   }

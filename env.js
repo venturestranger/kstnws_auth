@@ -10,12 +10,12 @@ const env = {
 	TOKEN_LIFETIME: "60d",
 	PORT: 4000,
 
-	URL_API: "http://tvoykostanay.kz/api",
+	URL_API: "https://tvoykostanay.kz/api",
 	TOKEN_API: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOiIyMDIzLTA0LTE5VDE5OjExOjM5LjgwNzU4MjIrMDY6MDAiLCJpYXQiOjE2ODE5MDYyOTksImlzcyI6ImRvbWFpbiJ9.N2bzXJW0r-obDXX30UP1lAbm9ULn-inXvDObQcGboB0",
 
 	GOOGLE_API_URL: "https://www.googleapis.com/oauth2/v1/userinfo?alt=json",
-	GOOGLE_CLIENT_ID: "484591857221-6acq88tleltg8c0eaa7vob7ic6sq9elq.apps.googleusercontent.com",
-	GOOGLE_CLIENT_SECRET: "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",
+	GOOGLE_CLIENT_ID: "1079797382477-kpge6hqed18vr1hgqmu3oaoh992p0bmj.apps.googleusercontent.com",
+	GOOGLE_CLIENT_SECRET: "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",
 	//GOOGLE_REDIRECT_URL: "http://localhost:4000/auth/google/callback",
 	GOOGLE_REDIRECT_URL: "http://tvoykostanay.kz/auth/google/callback",
 
@@ -24,18 +24,18 @@ const env = {
 	FACEBOOK_APP_SECRET: "6eb32226c5be7e629cfd3ada0da31a26",
 	FACEBOOK_REDIRECT_URL: "https://0669-188-130-157-73.ngrok-free.app",
 
-	MAIL_LOGIN: "kepler7563@gmail.com",
-	MAIL_PASSWORD: "vpfqrqliojiqwxce",
+	MAIL_LOGIN: "tvoykostanay@gmail.com",
+	MAIL_PASSWORD: "ppbuqezeczzvjhol",
 
-	LETTER_FROM: "tvoykostanay.kz",
+	LETTER_FROM: "Tvoykostanay.kz",
 
 	VERIFICATION_FROM: "tvoykostanay.kz",
-	VERIFICATION_SUBJECT: "verification link",
-	VERIFICATION_TEXT: "Verify your accout: ",
+	VERIFICATION_SUBJECT: "Верификация аккаунта на портале Tvoykostanay",
+	VERIFICATION_TEXT: "Для верификации перейдите по ссылке: https://tvoykostanay.kz/auth/verify/",
 
-	RESET_FROM: "tvoykostanay.kz",
-	RESET_SUBJECT: "verification link",
-	RESET_TEXT: "Verify your accout: ",
+	RESET_FROM: "Tvoykostanay.kz",
+	RESET_SUBJECT: "Сброс пароля на портале Tvoykostanay",
+	RESET_TEXT: "Для сброса пароля перейдите по ссылке: https://tvoykostanay.kz/auth/reset/",
 
 	SALT_ROUNDS: 10,
 

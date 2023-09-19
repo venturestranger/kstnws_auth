@@ -48,16 +48,14 @@ const registerLoginAttempt = function(req, res, next) {
 const verifyPage = function(req, res, mail) {
 	res.cookie("mail", mail, {signed: true, maxAge: env.SESSION_LIFETIME})
 	let token = jwt.sign({mail: mail, iss: env.ISSUER}, env.SECRET_KEY, {expiresIn: env.TOKEN_LIFETIME})
-	console.log(token)
-	// utils.sendVerifyLetter(mail, token)
+	utils.sendVerifyLetter(mail, token)
 	res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: [`verify-link-sent`]})
 }
 
 const resetPage = function(req, res, mail) {
 	res.cookie("mail", mail, {signed: true, maxAge: env.SESSION_LIFETIME})
 	let token = jwt.sign({mail: mail, iss: env.ISSUER}, env.SECRET_KEY, {expiresIn: env.TOKEN_LIFETIME})
-	console.log(token)
-	// utils.sendResetLetter(mail, token)
+	utils.sendResetLetter(mail, token)
 	res.render("status", {stts: env.OK, lang: req.cookies.lang, dict: dict, msgs: [`reset-link-sent`]})
 }
 
