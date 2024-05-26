@@ -9,7 +9,8 @@ const passwordErrorMsg = document.querySelector("#passwordErrorMsg");
 const passwordLongErrorMsg = document.querySelector("#passwordLongErrorMsg");
 const emailNotValidErr = document.querySelector("#emailNotValidError");
 
-const emailRegex = /^[^\s@]{1,64}@[^\s@]{1,255}\.[^\s@]{2,}$/i;
+const emailRegex = /^([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)$/i;
+const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{6,16}$/;
 
 function validateLoginForm(event) {
     event.preventDefault();
@@ -32,12 +33,13 @@ function validateLoginForm(event) {
         emailInput.style.borderColor = "#B9B9B9";
     }
 
-    if (password.length > 50) {
-        validatePassword();
+    if (!password.match(passwordRegex)) {
+        fail(passwordNotValidErr, passwordInput);
         isValid = false;
-    } else if (password.length < 1) {
-        validatePassword();
-        isValid = false;
+    } else {
+        passwordNotValidErr.style.display = 'none';
+        passwordInput.classList.remove("inputAdd");
+        passwordInput.style.borderColor = "#B9B9B9";
     }
 
     emailInput.addEventListener('click', validateEmail);
@@ -77,9 +79,7 @@ function validateEmail() {
 }
 
 function validatePassword() {
-    if (passwordInput.value.length > 50) {
-        fail(passwordLongErrorMsg, passwordInput);
-    } else if (passwordInput.value.length < 1) {
+    if (passwordInput.value.trim() === '') {
         fail(passwordErrorMsg, passwordInput);
     } else {
         passwordLongErrorMsg.style.display = 'none';

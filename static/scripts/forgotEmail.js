@@ -5,7 +5,7 @@ const loginEmailIcon = document.getElementById("loginEmailIcon");
 const emailErrorMsg = document.querySelector("#emailErrorMsg");
 const emailNotValidErr = document.querySelector("#emailNotValidError");
 
-const emailRegex = /^[^\s@]{1,64}@[^\s@]{1,255}\.[^\s@]{2,}$/i;
+const emailRegex = /^([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)$/i;
 
 function validateForgotEmailForm(event) {
     event.preventDefault();
