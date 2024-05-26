@@ -9,7 +9,7 @@ const passwordErrorMsg = document.querySelector("#passwordErrorMsg");
 const passwordLongErrorMsg = document.querySelector("#passwordLongErrorMsg");
 const emailNotValidErr = document.querySelector("#emailNotValidError");
 
-const emailRegex = /^[^\s@]{1,64}@[^\s@]{1,255}\.[^\s@]{2,}$/i;
+const emailRegex = /^([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)$/i;
 
 function validateLoginForm(event) {
     event.preventDefault();

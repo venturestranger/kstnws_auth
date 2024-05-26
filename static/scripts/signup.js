@@ -15,7 +15,7 @@ const nameErrorMsgLi = nameEmptyErrorMsg.querySelector('li');
 const nameCapitalMsg = document.querySelector("#nameCapitalMsg");
 
 const nameRegex = /^([A-Z][a-z]{0,29}|[А-Я][а-яё]{0,29}|[A-Za-z]+)$/;
-const emailRegex = /^[^\s@]{1,64}@[^\s@]{1,255}\.[^\s@]{2,}$/i;
+const emailRegex = /^([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)$/i;
 const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{6,16}$/;
 
 function validateRegisterForm(event) {
